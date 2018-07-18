@@ -38,6 +38,11 @@ class HexCalc
 	{
 		int decimal1 = Integer.parseInt(hexNumber1, 16);
 		int decimal2 = Integer.parseInt(hexNumber2, 16);
+		if(decimal2 == 0)
+		{
+			System.out.println("Can't divide!!");
+			return "Invalid";
+		}
 		int decDivide = decimal1 / decimal2;
 		String hexDivide = Integer.toHexString(decDivide);
 		return hexDivide;
@@ -73,6 +78,11 @@ public class HexCalcMain
 			System.out.println("5. Exit");
 			System.out.print("Enter your choice : ");
 			int choice = scan.nextInt();
+			while(!(choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5))
+			{
+				System.out.print("Enter correct choice : ");
+				choice = scan.nextInt();
+			}
 			System.out.println("Enter two hexadecimal numbers to perform the operations :-");
 			System.out.print("Enter first number : ");
 			String hexNumber1 = scan.next();
