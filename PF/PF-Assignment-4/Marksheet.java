@@ -2,14 +2,12 @@ import java.util.*;
 class MarksheetMethods	
 {
 	int noOfStudents;
-	
 	public double averageGrade(int students, double grades[]) {	//return average grade of the class
 		noOfStudents = students;
 		double totalGrade = 0;
 		for (int i = 0; i < noOfStudents; i++) {
 			totalGrade = totalGrade + grades[i];
 		}
-		System.out.print(totalGrade);
 		return (double)(totalGrade / noOfStudents);
 	}
 	
@@ -61,36 +59,44 @@ public class Marksheet
 		for(int i=0 ; i<noOfStudents ; i++){
 			System.out.print("Enter grade of student " + (i+1) + " : ");
 			grade[i] = scan.nextInt();
-		}
-		for (int i = 0; i < noOfStudents; i++) {
-			if (grade[i] > 100 || grade[i] < 0) {
-				System.out.println("Entered grades should only be from 0 to 100");
-				System.exit(1);
+			while (grade[i] > 100 || grade[i] < 0) {
+				System.out.println("\nEntered grades should only be from 0 to 100");
+				System.out.print("Enter grade of student " + (i+1) + " : ");
+				grade[i] = scan.nextInt();
 			}
 		}
 		
 		int choiceOfOperation;
 		while (true) {
-			System.out.print("Enter the operation you want to perform\n1.Average of Grades\n2.Maximum of Grades\n"
-					+ "3.Minimum of Grades\n4.Percent of Students Passed\n5.Exit\nEnter your choice : ");
+			System.out.print("\nEnter the operation you want to perform\n1.Average of Grades\n2.Maximum of Grades\n3.Minimum of Grades\n4.Percent of Students Passed\n5.Exit\nEnter your choice : ");
 			choiceOfOperation = scan.nextInt();
+			
 			switch (choiceOfOperation) {
-			case 1: System.out.println("Average grade is " + marksheetMethods.averageGrade(noOfStudents, grade));
-					 break;
+			case 1: 
+				System.out.println("Average grade is " + marksheetMethods.averageGrade(noOfStudents, grade));
+				 break;
 				
-			case 2: System.out.println("Maximum grade is " + marksheetMethods.maxGrade(noOfStudents, grade));
-					break;
+			case 2: 
+				System.out.println("Maximum grade is " + marksheetMethods.maxGrade(noOfStudents, grade));
+				break;
 				
-			case 3: System.out.println("Minimum grade is " + marksheetMethods.minGrade(noOfStudents, grade));
-					break;
+			case 3: 
+				System.out.println("Minimum grade is " + marksheetMethods.minGrade(noOfStudents, grade));
+				break;
 			
-			case 4:	System.out.println("Percentage of student passed is " + marksheetMethods.studentPassed(noOfStudents, grade));
-					break;
+			case 4:	
+				System.out.println("Percentage of student passed is " + marksheetMethods.studentPassed(noOfStudents, grade) + "%");
+				break;
 
-			case 5 : System.exit(1);
+			case 5 :
+				System.exit(1);
 			
-			default: System.out.println("Wrong Input");
+			default: 
+				System.out.println("Wrong Input");
 			}
+			
+			System.out.print("Enter any character to continue : ");
+			scan.next();
 		}
 		
 	
