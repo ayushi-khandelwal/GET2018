@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 class StringMethods {
-	public boolean compare(String string1, String string2) {
+	public boolean compare(String string1, String string2) {	//returns true if string1 and string2 are equal, else false
 		if (string1.length() == string2.length()) {
 			for (int i = 0; i < string1.length(); i++) {
 				if (string1.charAt(i) == string2.charAt(i));
@@ -18,9 +18,10 @@ class StringMethods {
 		}
 	}
 
-	public String reverse(String string) {
+	public String reverse(String string) {	//returns string agter reversing the inputted string
 		char tempArray[] = string.toCharArray();
 		int i, j = string.length() - 1;
+		
 		for (i = 0; i < j; i++, j--) {
 			char tempChar = tempArray[i];
 			tempArray[i] = tempArray[j];
@@ -30,9 +31,10 @@ class StringMethods {
 		return newString;
 	}
 
-	public String replaceCase(String string) {
+	public String replaceCase(String string) {	//returns string by replacing lowercase to uppercase letters and vice versa
 		char tempChar;
 		String tempStr = "";
+		
 		for (int i = 0; i < string.length(); i++)
 		{
 			tempChar = string.charAt(i);
@@ -52,26 +54,22 @@ class StringMethods {
 		return tempStr;
 	}
 
-	public String getLargestWord(String stringGet) {
+	public String getLargestWord(String stringGet) {	//returns the largest word from the end in the inputted string
 		StringBuilder largestWord = new StringBuilder();
 		int intermediateWordLength = 0;
 		int maxLength = 0;
 		String intermediateWord ="";
-		for (int i = 0; i < stringGet.length(); i++) 
-		{
-			if (stringGet.charAt(i) != ' ') 
-			{
-				intermediateWord = intermediateWord + (stringGet
-						.charAt(i));
+		
+		for (int i = 0; i < stringGet.length(); i++) {
+			if (stringGet.charAt(i) != ' ') {
+				intermediateWord = intermediateWord + (stringGet.charAt(i));
 				intermediateWordLength++;
 			} 
-			else
-			{
+			else{
 				intermediateWordLength = 0;
 				intermediateWord = "";
 			}
-			if (maxLength <= intermediateWordLength)
-			{
+			if (maxLength <= intermediateWordLength){
 				maxLength = intermediateWordLength;
 				largestWord = new StringBuilder(intermediateWord);
 			}
@@ -87,7 +85,7 @@ public class StringOperations {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		while(true) {
-			System.out.println("\n--STRING OPERATIONS MENU--");
+			System.out.println("--STRING OPERATIONS MENU--");
 			System.out.println("1.Compare the strings");
 			System.out.println("2.Reverse the string");
 			System.out.println("3.Replace case in string");
@@ -103,28 +101,27 @@ public class StringOperations {
 				String string1 = scan.next();
 				System.out.print("Enter second string : ");
 				String string2 = scan.next();
-				System.out.println("Given strings are equal(0 for false and 1 for true) : "
-						+ stringMethods.compare(string1, string2));
+				System.out.println("Given strings are equal(0 for false and 1 for true) : "	+ stringMethods.compare(string1, string2) + "\n");
 				break;
 
 			case 2:
 				System.out.print("Enter the string to reverse : ");
 				String stringRev = scan.next();
-				System.out.println(
-						"Reversed string of the given string " + stringRev + " is " + stringMethods.reverse(stringRev));
+				System.out.println("Reversed string of the given string " + stringRev + " is " + stringMethods.reverse(stringRev) + "\n");
 				break;
 
 			case 3:
 				System.out.print("Enter the string to replace case : ");
 				String stringRep = scan.next();
-				System.out.println("Replace case of the given string " + stringRep + " is "
-						+ stringMethods.replaceCase(stringRep));
+				System.out.println("Replace case of the given string " + stringRep + " is " + stringMethods.replaceCase(stringRep) + "\n");
 				break;
 
 			case 4:
 				System.out.print("Enter a line to get largest word : ");
 				String stringGet = scan.nextLine();
-				System.out.println("Largest word in the given string is " + stringMethods.getLargestWord(stringGet));
+				scan.nextLine();
+				System.out.println("Largest word in the given string is " + stringMethods.getLargestWord(stringGet) + "\n");
+				scan.nextLine();	//used to flush the buffer by using Scanner
 				break;
 
 			case 5:
