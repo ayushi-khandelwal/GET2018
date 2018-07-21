@@ -101,7 +101,12 @@ public class StringOperations {
 				String string1 = scan.next();
 				System.out.print("Enter second string : ");
 				String string2 = scan.next();
-				System.out.println("Given strings are equal(0 for false and 1 for true) : "	+ stringMethods.compare(string1, string2) + "\n");
+				if(stringMethods.compare(string1, string2)){
+					System.out.println("Given strings are equal\n");
+				}
+				else{
+					System.out.println("Given strings are not equal\n");
+				}
 				break;
 
 			case 2:
@@ -130,6 +135,8 @@ public class StringOperations {
 			default:
 				System.out.println("Invalid input");
 			}
+			System.out.print("Enter any character to continue : ");
+			scan.next();
 		} 
 	}
 }
