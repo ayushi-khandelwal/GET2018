@@ -43,8 +43,8 @@ class MarksheetMethods
 		}
 		return Math.round((double)noOfPassedStudents / noOfStudents * 100);
 	}
-	
 }
+
 public class Marksheet
 {
 	public static void main(String args[])
@@ -98,7 +98,5 @@ public class Marksheet
 			System.out.print("Enter any character to continue : ");
 			scan.next();
 		}
-		
-	
 	}
 }
