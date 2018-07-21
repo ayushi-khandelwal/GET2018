@@ -1,51 +1,46 @@
 import java.util.*;
 class Triangle	//implementing method to compute area
 {
-	double widthTriangle, heightTriangle;
-	public double triangleArea(double widthTriangle, double heightTriangle) {	//Assuming width and height will be greater than zero
-		this.widthTriangle = widthTriangle;
-		this.heightTriangle = heightTriangle;
-		double area = 0.0;
-		
+	double width, height;
+	public double area(double width, double height) {	//Assuming width and height will be greater than zero
+		this.width = width;
+		this.height = height;
+		double area=0.0;
 		try{
-			area = 0.5 * widthTriangle * heightTriangle;
+			area = 0.5 * width * height;
 		}
 		catch(ArithmeticException e){
 			System.out.println("Invalid input");
 		}
-		
 		return area;
 	}
 }
 
 class Rectangle	//implementing method to compute area
 {
-	double widthRectangle, heightRectangle;
-	public double rectangleArea(double widthRectangle, double heightRectangle){	//Assuming width and height will be greater than zero
-		this.widthRectangle = widthRectangle;
-		this.heightRectangle = heightRectangle;
+	double width, height;
+	public double area(double width, double height){	//Assuming width and height will be greater than zero
+		this.width = width;
+		this.height = height;
 		double area = 0.0;
-		
 		try{
-			area = widthRectangle * heightRectangle;
+			area = width * height;
 		}
 		catch(ArithmeticException e){
 			System.out.println("Invalid input");
 		}
-		
 		return area;
 	}
 }
 
 class Square	//implementing method to compute area
 {
-	double widthSquare;
-	public double squareArea(double widthSquare){	//Assuming width will be greater than zero
-		this.widthSquare = widthSquare;
+	double width;
+	public double area(double width){	//Assuming width will be greater than zero
+		this.width = width;
 		double area = 0.0;
-		
 		try{
-			area = widthSquare * widthSquare;
+			area = width * width;
 		}
 		catch(ArithmeticException e){
 			System.out.println("Invalid input");
@@ -56,13 +51,12 @@ class Square	//implementing method to compute area
 
 class Circle	//implementing method to compute area
 {
-	double radiusCircle;
-	public double circleArea(double radiusCircle){	//Assuming radius will be greater than zero
-		this.radiusCircle = radiusCircle;
+	double radius;
+	public double area(double radius){	//Assuming radius will be greater than zero
+		this.radius = radius;
 		double area = 0.0;
-		
 		try{
-			area = 3.14 * radiusCircle * radiusCircle;
+			area = 3.14 * radius * radius;
 		}
 		catch(ArithmeticException e){
 			System.out.println("Invalid input");
@@ -83,7 +77,7 @@ public class Area
 		char continu = 'a';
 		int choice;
 		
-		do{
+		while(true){
 			System.out.println("Menu to find Area of different shapes!!");
 			System.out.println("1.Triangle");
 			System.out.println("2.Rectangle");
@@ -97,64 +91,77 @@ public class Area
 			{
 				case 1: 
 					System.out.print("Enter width of triangle : "); 
-					double widthTriangle = scan.nextDouble();
-					System.out.print("Enter height of triangle : "); 
-					double heightTriangle = scan.nextDouble();
-					
-					if(widthTriangle<0 || heightTriangle<0){
-						System.out.println("Invalid input");
-						break;
+					double width = scan.nextDouble();
+					while(width < 0){
+						System.out.println("Width should be positive!!");
+						System.out.print("Enter width of triangle : ");
+						width = scan.nextDouble();
 					}
 					
-					System.out.println("Area of triangle is " + triangle.triangleArea(widthTriangle, heightTriangle));
+					System.out.print("Enter height of triangle : "); 
+					double height = scan.nextDouble();
+					while(height < 0){
+						System.out.println("Height should be positive!!");
+						System.out.print("Enter height of triangle : "); 
+						height = scan.nextDouble();
+					}
+					
+					System.out.println("Area of triangle is " + triangle.area(width, height));
 					break;
 						
 				case 2: 
 					System.out.print("Enter width of rectangle : "); 
 					double widthRectangle = scan.nextDouble();
-					System.out.print("Enter height of rectangle : "); 
-					double heightRectangle = scan.nextDouble();
-					
-					if(widthRectangle<0 || heightRectangle<0){
-						System.out.println("Invalid input");
-						break;
+					while(widthRectangle < 0){
+						System.out.println("Width should be positive!!");
+					System.out.print("Enter width of rectangle : ");
+						widthRectangle = scan.nextDouble();
 					}
 					
-					System.out.println("Area of rectangle is " + rectangle.rectangleArea(widthRectangle, heightRectangle));
+					System.out.print("Enter height of rectangle : "); 
+					double heightRectangle = scan.nextDouble();
+					while(heightRectangle < 0){
+						System.out.println("Height should be positive!!");
+						System.out.print("Enter height of rectangle : ");
+						heightRectangle = scan.nextDouble();
+					}
+					
+					System.out.println("Area of rectangle is " + rectangle.area(widthRectangle, heightRectangle));
 					break;
 						
 				case 3: 
 					System.out.print("Enter width of square : "); 
 					double widthSquare = scan.nextDouble();
 					
-					if(widthSquare<0){
-						System.out.println("Invalid input");
-						break;
+					while(widthSquare < 0){
+						System.out.println("Width should be positive!!");
+						System.out.print("Enter width of square : "); 
+						widthSquare = scan.nextDouble();
 					}
 					
-					System.out.println("Area of square is " + square.squareArea(widthSquare));
+					System.out.println("Area of square is " + square.area(widthSquare));
 					break;
 						
 				case 4:	
 					System.out.print("Enter radius of circle : "); 
 					double radiusCircle = scan.nextDouble();
 					
-					if(radiusCircle<0){
-						System.out.println("Invalid input");
-						break;
+					while(radiusCircle < 0){
+						System.out.println("Radius should be positive!!");
+						System.out.print("Enter radius of circle : "); 
+						radiusCircle = scan.nextDouble();
 					}
 					
-					System.out.println("Area of circle is " + circle.circleArea(radiusCircle));
+					System.out.println("Area of circle is " + circle.area(radiusCircle));
 					break;
 						
-				case 5: 
-					System.exit(0);
+				case 5: System.exit(0);
 				
 				default: System.out.print("Invalid input"); break;
 			}
-			System.out.print("\nDo you want to continue? (Y/N): ");
-			continu = scan.next().charAt(0);
+			System.out.print("Enter any character to continue : ");
+			scan.next();
 			System.out.println("");
-		}while(continu=='Y' || continu=='y');
-	}	
+		}
+	}
 }
