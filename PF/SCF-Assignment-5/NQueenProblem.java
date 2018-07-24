@@ -1,7 +1,20 @@
-
 public class NQueenProblem 
 {
-	
+	int[][] nQueenSolution(int board[][], int col, int size)
+	{
+		nQueen(board, col, size);
+		System.out.println("N Queen Problem for " + size + " x " + size + " :  \n");
+		for (int i = 0; i < size; i++)
+		{
+		    for (int j = 0; j < size; j++)
+			System.out.print(" " + board[i][j]
+					 + " ");
+		    System.out.println();
+		}
+		System.out.print("\n\n");
+		return board;
+    	}
+
     boolean isSafe(int board[][], int row, int col, int size)
     {
         int i, j;
