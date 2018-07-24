@@ -3,6 +3,9 @@ public class Search {
 	
 	int linearSearch(int arr[], int element, int index) {
 		
+		if(index > arr.length)
+			return -1;
+		
 		if(arr.length == 0){	//checks if array is empty
 			throw new AssertionError();
 		}
