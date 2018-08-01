@@ -1,49 +1,86 @@
 package SCF_Assignment_9.graphics_library.Shapes;
 
 import SCF_Assignment_9.graphics_library.Point;
+import graphics_library.Screen.ScreenException;
 
-public class Triangle implements Shape{
-	double base;
-	Point point;
-	Point point1;
-	Point point2;
-	Point point3;
-	Shape.ShapeType shape = Shape.ShapeType.Triangle;
-	
-	public Triangle(double base, Point point1, Point point2, Point point3) {
-		this.base = base;;
-		this.point1 = point1;
-		this.point2 = point2;
-		this.point3 = point3;
+import java.text.DecimalFormat;
+import java.util.Date;
+
+/**
+ * This Circle class implements Shape interface
+ * 
+ * @author Ayushi Khandelwal
+ *
+ */
+public class Triangle implements Shape {
+	private Point origin;
+	private Point pointA;
+	private Point pointB;
+	private double height;
+	private double base;
+	private double sideA;
+	private double sideB;
+	private double slopeA;
+	private double slopeB;
+	final Date timestamp;
+	DecimalFormat decimalFormatSpecifier = new DecimalFormat(".##");
+
+	Triangle(double height, double base, double sideA, Point origin, Date timestamp) throws ScreenException {
+		this.height = height;
+		this.base = base;
+		this.sideA = sideA;
+		computeOtherParameters();
+		this.origin = origin;
+		this.timestamp = timestamp;
 	}
-	
+
 	@Override
 	public double getArea() {
-		return ((Math.sqrt(3)/4) * base * base);
+		double perimeter = getPerimeter() / 2;
+		return Double.parseDouble(decimalFormatSpecifier
+				.format(Math.sqrt(perimeter * (perimeter - sideA) * (perimeter - sideB) * (perimeter - base))));
 	}
 
 	@Override
 	public double getPerimeter() {
-		return (3 * base);
+		return Double.parseDouble(decimalFormatSpecifier.format(sideA + sideB + base));
 	}
 
 	@Override
 	public Point getOrigin() {
-		return point1;
+		return origin;
 	}
 
 	@Override
-	public boolean isPointEnclosed(Point point) {
-		if(point1.x <= point.x && point1.y <= point.y)
-			if(point.x <= point2.x && point.y <= point2.y)
-				if(point.x <= point3.x && point.y <= point3.y)
-					return true; 
+	public boolean isPointEnclosed(Point isPointEnclosed) {
+		if (isPointEnclosed.getyPoint() - slopeA * isPointEnclosed.getxPoint() <= origin.getyPoint()
+				- slopeA * origin.getyPoint()
+				&& isPointEnclosed.getyPoint() - slopeB * isPointEnclosed.getxPoint() <= pointA.getyPoint()
+						- slopeB * pointA.getxPoint()
+				&& isPointEnclosed.getyPoint() >= origin.getyPoint()) {
+			return true;
+		}
 		return false;
 	}
 
 	@Override
-	public ShapeType getShapeType() {
-		return shape;
+	public Date getTimestamp() {
+		return timestamp;
 	}
 
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.Triangle;
+	}
+
+	private void computeOtherParameters() throws ScreenException {
+		double difference = Math.sqrt(Math.pow(sideA, 2) - Math.pow(height, 2));
+		double otherDifference = base - difference;
+		sideB = Math.sqrt(Math.pow(height, 2) + Math.pow(otherDifference, 2));
+		pointA = new Point(origin.getxPoint() + difference, origin.getyPoint() + height);
+		pointB = new Point(origin.getxPoint() + base, origin.getyPoint());
+		slopeA = (pointA.getyPoint() - origin.getyPoint()) / (pointA.getxPoint() - origin.getxPoint());
+		slopeB = (pointA.getyPoint() - pointB.getyPoint()) / (pointA.getxPoint() - pointB.getxPoint());
+		;
+	}
 }
