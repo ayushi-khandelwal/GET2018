@@ -1,18 +1,31 @@
 package SCF_Assignment_9.graphics_library.Shapes;
 
 import SCF_Assignment_9.graphics_library.Point;
+import graphics_library.Screen.ScreenException;
 
+import java.util.Date;
+
+/**
+ * This Circle class implements Shape interface
+ * 
+ * @author Ayushi Khandelwal
+ *
+ */
 public interface Shape {
 
-	public double getArea();
-	public double getPerimeter();
-	public Point getOrigin();
-	public boolean isPointEnclosed(Point point);
-	
-	enum ShapeType{
-		Square, Rectangle, Triangle, Circle;
-	}
+	double getArea();
 
-	public ShapeType getShapeType();
+	double getPerimeter();
 
+	Point getOrigin() throws ScreenException;
+
+	boolean isPointEnclosed(Point isPointEnclosed);
+
+	Date getTimestamp();
+
+	ShapeType getShapeType();
+}
+
+enum ShapeType {
+	Square, Rectangle, Circle, Triangle;
 }
