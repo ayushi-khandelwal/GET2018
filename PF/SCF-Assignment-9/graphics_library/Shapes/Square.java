@@ -2,45 +2,72 @@ package SCF_Assignment_9.graphics_library.Shapes;
 
 import SCF_Assignment_9.graphics_library.Point;
 
-public class Square implements Shape{
-	double width;
-	Point pointMin;
-	Point pointMax;
-	Shape.ShapeType shape = Shape.ShapeType.Square;
-	
-	
-	public Square(double width, Point pointMin, Point pointMax) {
+import graphics_library.Screen.ScreenException;
+
+import java.text.DecimalFormat;
+import java.util.Date;
+
+/**
+ * This Circle class implements Shape interface
+ * 
+ * @author Ayushi Khandelwal
+ *
+ */
+public class Square implements Shape {
+
+	final double width;
+	final Point origin;
+	final Date timestamp;
+	DecimalFormat decimalFormatSpecifier = new DecimalFormat(".##");
+
+	Square(double width, Point origin, Date timestamp) throws ScreenException {
 		this.width = width;
-		this.pointMin = pointMin;
-		this.pointMax = pointMax;
+		this.origin = origin;
+		this.timestamp = timestamp;
+		if ((origin.getxPoint() + width) > 1920 || (origin.getyPoint() + width) > 1080) {
+			throw new ScreenException("Width is out of Screen in Square");
+		}
 	}
-	
+
 	@Override
 	public double getArea() {
-		return (width * width);
+		return Double.parseDouble(decimalFormatSpecifier.format(width * width));
 	}
 
 	@Override
 	public double getPerimeter() {
-		return (4 * width);
+		return Double.parseDouble(decimalFormatSpecifier.format(4 * width));
 	}
 
 	@Override
 	public Point getOrigin() {
-		return pointMin;
+		return origin;
 	}
 
 	@Override
-	public boolean isPointEnclosed(Point point) {
-		if(pointMin.x <= point.x && pointMin.y <= point.y)
-			if(point.x <= pointMax.x && point.y <= pointMax.y)
-				return true;  
+	public boolean isPointEnclosed(Point isPointEnclosed) {
+
+		/*
+		 * If originX <= pointX <= originX+width and originY <= pointY <=originY+width
+		 * then the given point is enclosed by Rectangle
+		 */
+		if (origin.getxPoint() <= isPointEnclosed.getxPoint()
+				&& isPointEnclosed.getxPoint() <= origin.getxPoint() + width) {
+			if (origin.getyPoint() <= isPointEnclosed.getyPoint()
+					&& isPointEnclosed.getyPoint() <= origin.getyPoint() + width) {
+				return true;
+			}
+		}
 		return false;
 	}
-	
-	/** @return Shape Type */
+
 	@Override
-	public ShapeType getShapeType(){
-		return shape;
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.Square;
 	}
 }
