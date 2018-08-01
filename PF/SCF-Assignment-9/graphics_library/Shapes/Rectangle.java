@@ -1,47 +1,74 @@
 package SCF_Assignment_9.graphics_library.Shapes;
 
 import SCF_Assignment_9.graphics_library.Point;
+import java.text.DecimalFormat;
+import java.util.Date;
+import graphics_library.Screen.ScreenException;
 
-public class Rectangle implements Shape{
-	double width;
-	double height;
-	Point pointMin;
-	Point pointMax;
-	Shape.ShapeType shape = Shape.ShapeType.Rectangle;
-	
-	public Rectangle(double width, double height, Point pointMin, Point pointMax) {
+/**
+ * This Circle class implements Shape interface
+ * 
+ * @author Ayushi Khandelwal
+ *
+ */
+public class Rectangle implements Shape {
+
+	final double width;
+	final double height;
+	final Point origin;
+	final Date timestamp;
+	DecimalFormat decimalFormatSpecifier = new DecimalFormat(".##");
+
+	Rectangle(double width, double height, Point origin, Date timestamp) throws ScreenException {
 		this.width = width;
 		this.height = height;
-		this.pointMin = pointMin;
-		this.pointMax = pointMax;
+		this.origin = origin;
+		this.timestamp = timestamp;
+		if ((origin.getxPoint() + width) > 1920 || (origin.getyPoint() + height) > 1080) {
+			throw new ScreenException("Width or Height is out of Screen in Rectangle");
+		}
 	}
-	
+
 	@Override
 	public double getArea() {
-		return (width * height);
+		return Double.parseDouble(decimalFormatSpecifier.format(width * height));
 	}
 
 	@Override
 	public double getPerimeter() {
-		return (2 * (width + height));
+		return Double.parseDouble(decimalFormatSpecifier.format(2 * (width + height)));
 	}
 
 	@Override
 	public Point getOrigin() {
-		return pointMin;
+		return origin;
 	}
 
 	@Override
-	public boolean isPointEnclosed(Point point) {
-		if(pointMin.x <= point.x && pointMin.y <= point.y)
-			if(point.x <= pointMax.x && point.y <= pointMax.y)
-				return true;  
+	public boolean isPointEnclosed(Point isPointEnclosed) {
+
+		/*
+		 * If originX <= pointX <= originX+width and originY <= pointY <=originY+height
+		 * then the given point is enclosed by Rectangle
+		 */
+		if (origin.getxPoint() <= isPointEnclosed.getxPoint()
+				&& isPointEnclosed.getxPoint() <= origin.getxPoint() + width) {
+			if (origin.getyPoint() <= isPointEnclosed.getyPoint()
+					&& isPointEnclosed.getyPoint() <= origin.getyPoint() + height) {
+				return true;
+			}
+		}
 		return false;
 	}
 
 	@Override
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+	@Override
 	public ShapeType getShapeType() {
-		return shape;
+		return ShapeType.Rectangle;
 	}
 
 }
