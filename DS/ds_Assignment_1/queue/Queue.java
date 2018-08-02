@@ -1,8 +1,8 @@
-package ds_Assignment_1.stack;
+package ds_Assignment_1.queue;
 
-public interface Stack {
-	public boolean push(int value);
-	public int pop();
+public interface Queue {
+	public boolean enqueue(int value);
+	public int dequeue();
 	public int peek();
 	public boolean isEmpty(); 
 }
