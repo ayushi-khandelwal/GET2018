@@ -11,49 +11,44 @@ public class StackUsingArray implements Stack{
 		 top = -1;
 	}
 	
-	
 	@Override
 	public boolean push(int value) {
 		top++;
-		if(top >= max){
+		if(top == max)
 			return false;
-		}
 		
 		array[top] = value;
 		return true;
 	}
 
 	@Override
-	public boolean pop() {
-		if(isEmpty()){
-			return false;
-		}
+	public int pop() {
+		if(isEmpty())
+			return -1;
 		
-		top--;
-		return true;
+		return array[top--];
 	}
 
 	@Override
 	public int peek() {
-		if(top <= -1 || top >= max){
+		if(top == -1 || top == max)
 			throw new AssertionError();
-		}
+		
 		return (array[top]);
 	}
 
 	@Override
-	public int[] displayStack() {
-		if(top == -1 || top == max){
-			return null;
-		}
-		return array;
-	}
-
-	@Override
 	public boolean isEmpty() {
-		if(top <= -1)
+		if(top == -1)
 			return true;
+		
 		return false;
 	}
 
+	public int[] displayStack() {
+		if(top == -1 || top == max)
+			throw new AssertionError();
+		
+		return array;
+	}
 }
