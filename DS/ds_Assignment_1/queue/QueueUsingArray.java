@@ -1,58 +1,53 @@
-package ds_Assignment_1.queue;
+package ds_Assignment_1.stack;
 
-public class QueueUsingArray implements Queue {
+public class StackUsingArray implements Stack{
 	int max;
 	int[] array;
-	int start, end;
+	int top;
 	
-	public QueueUsingArray(int max) {
+	public StackUsingArray(int max) {
 		this.max = max;
 		 array = new int[max];
-		 start = 0;
-		 end = -1;
+		 top = -1;
 	}
-
+	
 	@Override
-	public boolean add(int value) {
-		if(start == -1)
-			start++;
-		
-		end++;
-		
-		if(end == max){
+	public boolean push(int value) {
+		top++;
+		if(top == max)
 			return false;
-		}
 		
-		array[end] = value;
+		array[top] = value;
 		return true;
 	}
 
 	@Override
-	public boolean delete() {
-		if(isEmpty()){
-			return false;
-		}
-		if(start == end){
-			start = -1;
-			end = -1;
-		}
+	public int pop() {
+		if(isEmpty())
+			return -1;
 		
-		start--;
-		return true;
+		return array[top--];
+	}
+
+	@Override
+	public int peek() {
+		if(top == -1 || top == max)
+			throw new AssertionError();
+		
+		return (array[top]);
 	}
 
 	@Override
 	public boolean isEmpty() {
-		if(end == -1)
+		if(top == -1)
 			return true;
 		return false;
 	}
 
-	@Override
-	public boolean isFull() {
-		if(start == max-1)
-			return true;
-		return false;
+	public int[] displayStack() {
+		if(top == -1 || top == max)
+			throw new AssertionError();
+		
+		return array;
 	}
-	
 }
