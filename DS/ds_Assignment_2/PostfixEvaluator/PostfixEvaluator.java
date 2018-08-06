@@ -1,4 +1,4 @@
-package ds_Assignment_2.PostfixEvaluator;
+package ds_Assignment_2.Q1_PostfixEvaluator;
 
 import ds_Assignment_1.stack.StackUsingArray;
 import java.util.StringTokenizer;
@@ -13,7 +13,7 @@ public class PostfixEvaluator {
 	 * @param actualExpression
 	 * @return evaluation of postfix expression
 	 */
-	public int evaluate(String actualExpression) {
+	public String evaluate(String actualExpression) {
 		
 		StringTokenizer stringTokenizer = new StringTokenizer(actualExpression, " ");	//stores tokens separated by space
 		StackUsingArray stack = new StackUsingArray(stringTokenizer.countTokens());
@@ -30,11 +30,11 @@ public class PostfixEvaluator {
 				switch(str) {
 					case "+" : 
 						if(stack.isEmpty())		
-							return -1;
+							return null;
 						number1 = stack.pop();
 						
 						if(stack.isEmpty())
-							return -1;
+							return null;
 						number2 = stack.pop();
 						
 						stack.push(number2 + number1);
@@ -42,33 +42,33 @@ public class PostfixEvaluator {
 				
 					case "-" : 
 						if(stack.isEmpty())
-							return -1;
+							return null;
 						number1 = stack.pop();
 						
 						if(stack.isEmpty())
-							return -1;
+							return null;
 						number2 = stack.pop();
 						stack.push(number2 - number1);
 						break;
 			
 					case "*" : 
 						if(stack.isEmpty())
-							return -1;
+							return null;
 						number1 = stack.pop();
 						
 						if(stack.isEmpty())
-							return -1;
+							return null;
 						number2 = stack.pop();
 						stack.push(number2 * number1);
 						break;
 		
 					case "/" : 
 						if(stack.isEmpty())
-							return -1;
+							return null;
 						number1 = stack.pop();
 						
 						if(stack.isEmpty())
-							return -1;
+							return null;
 						number2 = stack.pop();
 						stack.push(number2 / number1);
 						break;
@@ -76,9 +76,9 @@ public class PostfixEvaluator {
 			}
 		}
 		if(stack.countElements() != 1)	//if stack contain more than one operand
-			return -1;		//invalid output
+			return null;		//invalid output
 		
 		int result = stack.pop();
-		return result;
+		return (result + "");
 	}
 }
