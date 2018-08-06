@@ -1,10 +1,10 @@
-package ds_Assignment_2.CircularQueue;
+package ds_Assignment_2.Q3_CircularQueue;
 
 /**
  * @author Ayushi Khandelwal
  *
  */
-public class QueueUsingArray {
+public class CircularQueue {
 	int max;
 	int[] array;
 	int front, rear;
@@ -13,7 +13,7 @@ public class QueueUsingArray {
 	/**
 	 * @param max
 	 */
-	public QueueUsingArray(int max) {
+	public CircularQueue(int max) {
 		this.max = max;
 		 array = new int[max];
 		 front = 0;
