@@ -19,7 +19,6 @@ public class ListOLists implements IList {
      * innerlists and add them in outerlist
      */
     public ListOLists() {
-        //listOfList.clear();
         listOfList = new ArrayList<>();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
         listOuter1 = new ArrayList<>();
         listOuter2 = new ArrayList<>();
@@ -27,7 +26,6 @@ public class ListOLists implements IList {
         listOfList.add(listOuter1);
         listOfList.add(listOuter2);
         listOfList.add(listOuter3);
-        
     }
     
     public void addCustomList(List<Integer> listInner11, List<Integer> listInner12, List<Integer> listInner21, List<Integer> listInner22, List<Integer> listInner31, List<Integer> listInner32) {
@@ -57,7 +55,6 @@ public class ListOLists implements IList {
             throw new AssertionError();
         
         else if (string.charAt(0) == 'H' && string.length() == 1) {
-            System.out.println(string +", " + list);
             if ((list.get(0)) instanceof Integer) {
                 value = ((Integer) list.get(0));
                 return (value + "");
@@ -69,9 +66,6 @@ public class ListOLists implements IList {
             list.remove(0);
             return getElement((List<Object>) list, string.substring(1, string.length()));
         }
-        
-        else if (string.charAt(0) == 'H') 
-            return getElement((List<Object>) list.get(0), string.substring(1, string.length()));
         
         else if (string.charAt(0) == 'H') 
             return getElement((List<Object>) list.get(0), string.substring(1, string.length()));
