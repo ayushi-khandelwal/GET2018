@@ -41,7 +41,7 @@ public class CircularQueue {
 	 */
 	public int dequeue() {
 		if(isEmpty()){
-			return -1;
+			throw new AssertionError();
 		}
 		
 		int item = array[front];
@@ -64,7 +64,7 @@ public class CircularQueue {
 	 */
 	public int peek() {
 		if (isEmpty()) {
-            return -1;
+            throw new AssertionError();
         } else {
             return array[front];
         }
