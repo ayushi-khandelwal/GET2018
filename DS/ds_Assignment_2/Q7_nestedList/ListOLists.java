@@ -38,7 +38,7 @@ public class ListOLists implements IList {
     }
 
     @Override
-    public String getValue(List<Object> list, String string) {
+    public String getValue(String string) {
         return (getElement(listOfList, string));
     }
 

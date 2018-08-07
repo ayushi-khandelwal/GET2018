@@ -16,7 +16,6 @@ import org.junit.Test;
 public class ListJUnitTest {
 	
 ListOLists listOLists = new ListOLists();
-List<Object> list = new ArrayList<>();
     
     @Before
     public void init() {
@@ -32,48 +31,46 @@ List<Object> list = new ArrayList<>();
     
     @Test(expected = AssertionError.class)
     public void test_LargestValue_SingleH_ReturnInvalidOutput() { 
-        assertEquals(null, listOLists.getValue(list, "H"));
+        assertEquals(null, listOLists.getValue("H"));
     }
 
     @Test(expected = AssertionError.class)
     public void test_LargestValue_SingleT_ReturnInvalidOutput() { 
-        assertEquals(null, listOLists.getValue(list, "T"));
+        assertEquals(null, listOLists.getValue("T"));
     }
 
     @Test(expected = AssertionError.class)
     public void test_LargestValue_EndsWithT_ReturnInvalidOutput() { 
-        assertEquals(null, listOLists.getValue(list, "HHT"));
+        assertEquals(null, listOLists.getValue("HHT"));
     }
 
     @Test
     public void test_LargestValue__ReturnValidOutput() { 
-        assertEquals(1, Integer.parseInt(listOLists.getValue(list, "HHH")));
+        assertEquals(1, Integer.parseInt(listOLists.getValue("HHH")));
     }
 
     @Test
     public void test_LargestValue_HHTH_ReturnValidOutput() { 
-        assertEquals(2, Integer.parseInt(listOLists.getValue(list, "HHTH")));
+        assertEquals(2, Integer.parseInt(listOLists.getValue("HHTH")));
     }
 
     @Test
     public void test_LargestValue_HHTTH_ReturnValidOutput() { 
-        assertEquals(3, Integer.parseInt(listOLists.getValue(list, "HHTTH")));
+        assertEquals(3, Integer.parseInt(listOLists.getValue("HHTTH")));
     }
 
     @Test
     public void test_LargestValue_HHTTTH_ReturnValidOutput() { 
-        assertEquals(4, Integer.parseInt(listOLists.getValue(list, "HHTTTH")));
+        assertEquals(4, Integer.parseInt(listOLists.getValue("HHTTTH")));
     }
 
     @Test
     public void test_LargestValue_HHTH_ReturnInvalidOutput() { 
-        assertEquals(5, Integer.parseInt(listOLists.getValue(list, "HTHH")));
+        assertEquals(5, Integer.parseInt(listOLists.getValue("HTHH")));
     }
 
     @Test(expected = AssertionError.class)
     public void test_LargestValue_IfInputIsAccessingArrayList_ReturnInvalidOutput() { 
-        assertEquals(null, listOLists.getValue(list, "HTH"));
+        assertEquals(null, listOLists.getValue("HTH"));
     }
-
-   
 }
