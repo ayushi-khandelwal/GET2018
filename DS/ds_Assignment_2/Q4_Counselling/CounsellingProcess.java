@@ -59,7 +59,7 @@ public class CounsellingProcess {
             workbook.close();
             inputStream.close();
         } catch (IOException ex) {
-            throw new IOException("File Not Found while adding Programs");
+            throw new IOException(ex);
         }
     }
 
@@ -101,7 +101,7 @@ public class CounsellingProcess {
             workbook.close();
             inputStream.close();
         } catch (IOException ex) {
-            throw new IOException("File Not Found while adding Students");
+            throw new IOException();
         }
     }
 

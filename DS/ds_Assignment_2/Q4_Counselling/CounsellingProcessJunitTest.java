@@ -1,14 +1,12 @@
 package ds_Assignment_2.Q4_Counselling;
 
 import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * @author Ayushi Khandelwal
- *
- */
 public class CounsellingProcessJunitTest {
 
     CounsellingProcess cp;
@@ -25,21 +23,13 @@ public class CounsellingProcessJunitTest {
         cp.allotPrograms();
     }
 
-    @Test
-    public void programFileNotExistTest() {
-        try {
-            cp.addProgram("Programs.xlsx");
-        } catch (IOException ex) {
-            assertEquals("File Not Found while adding Programs", ex.getMessage());
-        }
+    @Test(expected = IOException.class)
+    public void programFileNotExistTest() throws IOException {
+            cp.addProgram("Programsss.xlsx");
     }
 
-    @Test
-    public void studentFileNotExistTest() {
-        try {
-            cp.addStudent("Student.xlsx");
-        } catch (IOException ex) {
-            assertEquals("File Not Found while adding Students", ex.getMessage());
-        }
+    @Test(expected = IOException.class)
+    public void studentFileNotExistTest() throws IOException {
+            cp.addStudent("Studentsss.xlsx");
     }
 }
