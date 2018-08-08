@@ -17,15 +17,15 @@ public class PriorityQueueJUnitTest {
 
     @Test(expected = AssertionError.class)
     public void test_enqueue_WhenItemIsNull_ReturnAssertionError() {
-        queue.enqueue("", 2);
+        assertEquals(AssertionError.class, queue.enqueue("", 2));
     }
-    
+     
     @Test(expected = AssertionError.class)
     public void test_enqueue_WhenPriorityIsNegative_ThrowAssertionError() {
         assertEquals(true, queue.enqueue("Item1", 0));
-        queue.enqueue("Item2", -1);
+        assertEquals(AssertionError.class, queue.enqueue("Item2", -1));
     }
-    
+     
     @Test
     public void test_getHighestPriority_WhenAllItemsHavingDifferentPriority_ReturnHighestPriority() {
         assertEquals(true, queue.enqueue("Item1", 1));
@@ -56,7 +56,7 @@ public class PriorityQueueJUnitTest {
     public void test_getHighestPriorityItem_WhenQueueIsEmpty_ReturnNegativeValue() {
         assertEquals(true, queue.isEmpty());
         queue.getHighestPriorityItem();
-    }
+    } 
 
     @Test
     public void test_dequeueHighestPriority_WhenAllItemsHavingDifferentPriority_ReturnItemOfHighestPriority() {
@@ -67,10 +67,10 @@ public class PriorityQueueJUnitTest {
         assertEquals("Item2", queue.dequeueHighestPriorityItem());
         assertEquals("Item4", queue.dequeueHighestPriorityItem());
     }
-
+ 
     @Test(expected = AssertionError.class)
     public void test_dequeueHighestPriority_WhenQueueIsEmpty_ThrowAssertionError() {
-        queue.dequeueHighestPriorityItem();
+        assertEquals(AssertionError.class, queue.dequeueHighestPriorityItem());
     }
 
     @Test

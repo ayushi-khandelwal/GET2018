@@ -16,19 +16,26 @@ public class PriorityQueue implements Queue {
     
     //default constructor to initialize HashMap
     public PriorityQueue() {
-        map = new HashMap<>();
-    }
-    
+        map = new HashMap<>(); 
+    } 
+     
     //inserts item and its priority in HashMap
     @Override
     public boolean enqueue(String item, int priority) {
+        
         //if priority is negative then throws AssertionError
         if(priority < 0 || item == ""){
             throw new AssertionError();
         }
-        
-        map.put(item, priority);
-        return true;
+            
+        try {  
+            map.put(item, priority);
+            return true;
+        }
+        catch(AssertionError e) {
+            e.printStackTrace();
+        }
+        return false;
     }
     
     //delete item of highest priority from HashMap
@@ -36,13 +43,21 @@ public class PriorityQueue implements Queue {
     @Override
     public String dequeueHighestPriorityItem() {
         int largestPriority = getHighestPriority();
+       
+        if(isEmpty())
+            throw new AssertionError();
         
-        for (Object obj: map.entrySet() ) {
-            Map.Entry entry = (Map.Entry) obj;
-            if(largestPriority == (int) entry.getValue()) {
-                map.remove(entry.getKey());            
-                return (String) entry.getKey();
+        try {
+            for (Object obj: map.entrySet() ) {
+                Map.Entry entry = (Map.Entry) obj;
+                if(largestPriority == (int) entry.getValue()) {
+                    map.remove(entry.getKey());            
+                    return (String) entry.getKey();
+                }
             }
+        }
+        catch(AssertionError e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -51,19 +66,28 @@ public class PriorityQueue implements Queue {
     @SuppressWarnings("rawtypes")
     @Override
     public int getHighestPriority() {
-        if(!isEmpty()) {
-            int largestPriority = -1;
-            
-            //retrieve HashMap to get highest priority
-            for (Object obj: map.entrySet() ) {
-                Map.Entry entry = (Map.Entry) obj;
-                if(largestPriority < (int) entry.getValue()) {
-                    largestPriority = (int) entry.getValue();
+
+        if(isEmpty())
+            throw new AssertionError();
+        
+        try {
+            if(!isEmpty()) {
+                int largestPriority = -1;
+                
+                //retrieve HashMap to get highest priority
+                for (Object obj: map.entrySet() ) {
+                    Map.Entry entry = (Map.Entry) obj;
+                    if(largestPriority < (int) entry.getValue()) {
+                        largestPriority = (int) entry.getValue();
+                    }
                 }
+                return largestPriority;
             }
-            return largestPriority;
         }
-        throw new AssertionError();
+        catch(AssertionError e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     //gives item having highest priority among all the items present in HashMap
@@ -71,13 +95,22 @@ public class PriorityQueue implements Queue {
     @Override
     public String getHighestPriorityItem() {
         int largestPriority = getHighestPriority();
+
+        if(isEmpty())
+            throw new AssertionError();
         
-        //retrieves key from value
-        for (Entry entry : map.entrySet()) { 
-            if (Objects.equals(largestPriority, entry.getValue())) { 
-                return (String) entry.getKey(); 
-            } 
-        } return null; 
+        try {
+          //retrieves key from value
+            for (Entry entry : map.entrySet()) { 
+                if (Objects.equals(largestPriority, entry.getValue())) { 
+                    return (String) entry.getKey(); 
+                } 
+            }
+        }
+        catch(AssertionError e) {
+            e.printStackTrace();
+        }
+         return null; 
     }
     
     @Override
@@ -91,11 +124,17 @@ public class PriorityQueue implements Queue {
     public String getItem() {
         int largestPriority = getHighestPriority();
         
-        for (Entry entry : map.entrySet()) { 
-            if (Objects.equals(largestPriority, entry.getValue())) { 
-                entry.setValue((int)(entry.getValue()) - 1);
-                return (String) entry.getKey(); 
+        try {
+            for (Entry entry : map.entrySet()) { 
+                if (Objects.equals(largestPriority, entry.getValue())) { 
+                    entry.setValue((int)(entry.getValue()) - 1);
+                    return (String) entry.getKey(); 
+                } 
             } 
-        } return null; 
+        }
+        catch(AssertionError e) {
+            e.printStackTrace();
+        }
+        return null; 
     }
 }
