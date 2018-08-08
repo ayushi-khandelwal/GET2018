@@ -13,7 +13,7 @@ public class Cricket {
     int noOfBowlers;
     int noOfBalls;
     String orderOfBowlers[];
-    
+     
     /**
      * @param noOfBowlers
      * @param noOfBalls
@@ -34,26 +34,38 @@ public class Cricket {
      * and this method adds bowler with balls in priority queue
      */
     public void addBowler(String string, int ball) {
-        
-        //if bowler name is null or number of balls are negative then throw AssertionError
-        if(!((string == "" || ball < 0) && (currentBowler < noOfBowlers))) {
-            priorityQueue.enqueue(string, ball);
-            currentBowler++;
-        }
-        else
+        if((string == "" || ball < 0) && (currentBowler < noOfBowlers)) {
             throw new AssertionError();
+        }
+        
+        try {
+          //if bowler name is null or number of balls are negative then throw AssertionError
+                priorityQueue.enqueue(string, ball);
+                currentBowler++;
+        }
+        catch(AssertionError e) {
+            e.printStackTrace();
+            throw new AssertionError();
+        }
     }
 
     /**
      * @return order of bowlers chosen by captain for Virat to score as low as possible
      */
     public String[] calculateOrderOfBowlers() {
-        System.out.print("Order of bowlers is : ");
-        for(int i = 0; i < noOfBalls; i++) {
-            orderOfBowlers[i] = priorityQueue.getItem();
-            System.out.print(orderOfBowlers[i] + ", ");
+        
+        try {
+            System.out.print("Order of bowlers is : ");
+            for(int i = 0; i < noOfBalls; i++) {
+                orderOfBowlers[i] = priorityQueue.getItem();
+                System.out.print(orderOfBowlers[i] + ", ");
+            }
+            System.out.println("");
         }
-        System.out.println("");
+        catch(AssertionError e) {
+            e.printStackTrace();
+            throw new AssertionError();
+        }
         return orderOfBowlers;
     }
 }
