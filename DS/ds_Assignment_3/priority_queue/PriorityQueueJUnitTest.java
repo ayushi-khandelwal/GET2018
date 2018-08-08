@@ -14,9 +14,9 @@ public class PriorityQueueJUnitTest {
         assertEquals(true, queue.enqueue("Item3", 3));
         assertEquals(true, queue.enqueue("Item4", 4));
     }
-
+ 
     @Test(expected = AssertionError.class)
-    public void test_enqueue_WhenItemIsNull_ReturnAssertionError() {
+    public void test_enqueue_WhenItemIsNull_ThrowAssertionError() {
         assertEquals(AssertionError.class, queue.enqueue("", 2));
     }
      
@@ -53,7 +53,7 @@ public class PriorityQueueJUnitTest {
     }
 
     @Test(expected = AssertionError.class)
-    public void test_getHighestPriorityItem_WhenQueueIsEmpty_ReturnNegativeValue() {
+    public void test_getHighestPriorityItem_WhenQueueIsEmpty_ThrowAssertionError() {
         assertEquals(true, queue.isEmpty());
         queue.getHighestPriorityItem();
     } 
