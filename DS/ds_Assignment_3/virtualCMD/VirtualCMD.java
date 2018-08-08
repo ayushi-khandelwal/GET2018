@@ -1,8 +1,5 @@
-package ds_Assignment_3.virtualCMD;
+package ds_Assignment_3.virtualCMD; 
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 import java.util.Scanner;
 
 public class VirtualCMD {
@@ -10,64 +7,71 @@ public class VirtualCMD {
     static Directory currentDir;
 
     public static void main(String[] args) {
-        String command;
+        System.out.println(": : : : Welcome to Metacube Virtual Command Prompt : : : :\n");
+        
+        String command; 
 
         root = new Directory("R:", null);
         currentDir = root;
 
         while (true) {
-            
-            System.out.print(getFullPath(currentDir) + "> ");
+
+            System.out.print(getFullPath(currentDir) + "/> ");
             Scanner scan = new Scanner(System.in);
             command = scan.nextLine().trim();
-             
-            /*String prompt = currentDir.getName();
 
-            Directory temp = currentDir;
-            while (temp.getParent() != null) {
-                prompt = temp.getParent().getName() + "/" + prompt + "";
-                temp = temp.getParent();
-            }
-            System.out.print(prompt + "> ");*/
-
-            switch (command.split(" ")[0]) {
-            case "mkdir":
-                makeDirectory(command.replace("mkdir ", ""), currentDir);
-                break;
-            case "cd":
-                if (!changeDirectory(command.replace("cd ", ""))) {
-                    System.out.println("No such Directory found!");
-                    // System.out.println(currentDir.getName()+ " " +
-                    // currentDir.getParent().getName() + " " +
-                    // currentDir.getTimeStamp() + " ");
+            /**
+             * taking commands from virtual CMD and processing them accordingly
+             */
+            try {
+                switch (command.split(" ")[0]) { 
+                case "mkdir":
+                    makeDirectory(command.replace("mkdir ", ""), currentDir);
+                    break; 
+                    
+                case "cd":
+                    if (!changeDirectory(command.replace("cd ", ""))) {
+                        System.out.println("No such Directory found!");
+                    }
+                    break;
+                    
+                case "bk":
+                    if (!backDir()) {
+                        System.out.println("Already on root!");
+                    }
+                    break;
+                    
+                case "ls":
+                    System.out.println(listDirectories());
+                    break;
+                    
+                case "find":
+                    String findData = findDirectory(currentDir,
+                            command.replace("find ", ""));
+                    if ("".equals(findData)) {
+                        System.out.println("Directory not found!");
+                    } else {
+                        System.out.println(findData);
+                    }
+                    break;
+                    
+                case "tree":
+                    System.out.println(getTree(currentDir, "", 0));
+                    break;
+                    
+                case "exit":
+                    scan.close();
+                    System.exit(0);
+                    
+                default:
+                    System.out.println("Unknown command");
                 }
-                break;
-            case "bk":
-                if (!backDir()) {
-                    System.out.println("Already on root!");
-                }
-                break;
-            case "ls":
-                System.out.println(listDirectories());
-                break;
-            case "find":
-                String findData = findDirectory(currentDir, command.replace("find ", ""));
-                if ("".equals(findData)) {
-                    System.out.println("Directory not found!");
-                } else {
-                    System.out.println(findData.replaceAll("R:", "."));
-                }
-                break;
-            case "tree":
-                break;
-            case "exit":
-                System.exit(0);
-            default:
-                System.out.println("Unknown command");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
-    
+
     public static String getFullPath(Directory dir) {
         String prompt = dir.getName();
         while (dir.getParent() != null) {
@@ -109,63 +113,43 @@ public class VirtualCMD {
                 + " folder(s)";
         return details;
     }
-    
+
     public static String findDirectory(Directory curDir, String name) {
         String findResult = "";
         if (name.equals(curDir.getName())) {
             findResult += getFullPath(curDir) + "\n";
+            if (curDir == currentDir) {
+                findResult = findResult.replace(curDir.getName(), ".");
+            }
         }
-        
+
         for (Directory dir : curDir.getListOfSubDirectories()) {
-            findResult += findDirectory(dir,name);
+            findResult += findDirectory(dir, name);
         }
         return findResult;
     }
-}
 
-class Directory {
-    private String name;
-    private Directory parent;
-    private String timeStamp;
-    private List<Directory> listOfSubDirectories;
-
-    public Directory(String name, Directory parent) {
-        this.name = name;
-        this.parent = parent;
-        timeStamp = Calendar.getInstance().getTime().toString();
-        listOfSubDirectories = new ArrayList<Directory>();
+    public static String getTree(Directory curDir, String result, int level) {
+        if (curDir == currentDir) {
+            result += ".\n";
+        } else {
+            result += curDir.getName() + "\n";
+        }
+        
+        for ( int i = 0; i < curDir.getListOfSubDirectories().size(); i++) {
+            Directory dir = curDir.getListOfSubDirectories().get(i);
+            for (int lvl = level; lvl > 0; lvl--) {
+                result += "   ";
+            }
+            
+            if (i != curDir.getListOfSubDirectories().size() - 1) {
+                result += "\u251c\u2500\u2500";
+            } else {
+                result += "\u2514\u2500\u2500";
+            }
+            
+            result = getTree(dir, result, level+1);
+        }
+        return result;
     }
-
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @return the parent
-     */
-    public Directory getParent() {
-        return parent;
-    }
-
-    /**
-     * @return the timeStamp
-     */
-    public String getTimeStamp() {
-        return timeStamp;
-    }
-
-    /**
-     * @return the listOfSubDirectories
-     */
-    public List<Directory> getListOfSubDirectories() {
-        return listOfSubDirectories;
-    }
-
-    public void addItem(Directory item) {
-        listOfSubDirectories.add(item);
-    }
-
 }
