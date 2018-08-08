@@ -11,37 +11,58 @@ public class StackUsingArrayJUnitTest {
 	@Test
 	public void test_Push_WhenElementIsPushed_ReturnTrue() {
 		assertEquals(true, stack.push(1));
-	}
-	
-	@Test
-	public void test_Push_WhenStackIsFull_ReturnFalse() {
-			assertEquals(true, stack.push(1));
-			assertEquals(true, stack.push(2));
-			assertEquals(true, stack.push(3));
-			assertEquals(false, stack.push(4));
+		assertEquals(true, stack.push(2));
+		assertEquals(true, stack.push(3));
 	}
 
 	@Test
-	public void test_Pop_WhenStackHasElements_ReturnTrue() {
-		stack.push(2);
-		assertEquals(true, stack.pop());
+	public void test_Pop_WhenStackHasElements_ReturnPoppedElements() {
+		assertEquals(true, stack.push(1));
+		assertEquals(true, stack.push(3));
+		assertEquals(true, stack.push(4));
+		assertEquals(4, stack.pop());
+		assertEquals(3, stack.pop());
 	}
-	
+
 	@Test
-	public void test_Pop_WhenStackIsEmpty_ReturnFalse() {
-		assertEquals(false, stack.pop());
+	public void test_Pop_WhenStackIsEmpty_ReturnNegativeValue() {
+		assertEquals(-1, stack.pop());
 	}
 	
-		
 	@Test
 	public void test_Peek_WhenStackHasElements_ReturnPeek() {
-		stack.push(2);
+		assertEquals(true, stack.push(2));
 		assertEquals(2, stack.peek());
 	}
 
 	@Test(expected = AssertionError.class)
 	public void test_Peek_WhenStackIsEmpty_ThrowAssertionError() {
-			assertEquals("Stack underflow", stack.peek());
+		assertEquals("Stack underflow", stack.peek());
+	}
+
+	@Test
+	public void test_isEmpty_WhenStackIsEmpty_ReturnTrue() {
+		assertEquals(true, stack.isEmpty());
+	}
+
+	@Test
+	public void test_Peek_isEmpty_WhenStackIsNotEmpty_ReturnFalse() {
+		assertEquals(true, stack.push(5));
+		assertEquals(false, stack.isEmpty());
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void test_WhenAllOperationsPerformed() {
+		assertEquals(true, stack.push(1));
+		assertEquals(true, stack.push(3));
+		assertEquals(3, stack.pop());
+		assertEquals(true, stack.push(5));
+		assertEquals(5, stack.peek());
+		assertEquals(false, stack.isEmpty());
+		assertEquals(5, stack.pop());
+		assertEquals(1, stack.pop());
+		assertEquals("Stack underflow", stack.peek());
+		assertEquals(-1, stack.pop());
 	}
 
 	@Test
@@ -49,19 +70,12 @@ public class StackUsingArrayJUnitTest {
 		stack.push(1);
 		stack.push(2);
 		stack.push(3);
-		int[] array = {1, 2, 3};
-		assertArrayEquals(array, stack.displayStack());
+		int[] expectedArray = {1, 2, 3};
+		assertArrayEquals(expectedArray, stack.displayStack());
 	}
 	
-	@Test
+	@Test(expected = AssertionError.class)
 	public void test_DisplayStack_WhenStackIsEmpty_ThrowAssertionError() {
-		try{
-			stack.displayStack();
-		} catch(AssertionError e){
-			assertEquals("Stack underflow", e.getMessage());
-		}
+		assertEquals("Stack underflow", stack.displayStack());
 	}
-	
-	
-
 }

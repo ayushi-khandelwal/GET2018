@@ -1,12 +1,12 @@
 package ds_Assignment_3.priority_queue;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class PriorityQueueJUnitTest {
 
     PriorityQueue queue = new PriorityQueue();
+    
     @Test
     public void test_enqueue() {
         assertEquals(true, queue.enqueue("Item1", 1));
@@ -14,11 +14,16 @@ public class PriorityQueueJUnitTest {
         assertEquals(true, queue.enqueue("Item3", 3));
         assertEquals(true, queue.enqueue("Item4", 4));
     }
+
+    @Test(expected = AssertionError.class)
+    public void test_enqueue_WhenItemIsNull_ReturnAssertionError() {
+        queue.enqueue("", 2);
+    }
     
-    @Test
-    public void test_enqueue_WhenPriorityIsNegative_ReturnFalse() {
+    @Test(expected = AssertionError.class)
+    public void test_enqueue_WhenPriorityIsNegative_ThrowAssertionError() {
         assertEquals(true, queue.enqueue("Item1", 0));
-        assertEquals(false, queue.enqueue("Item2", -1));
+        queue.enqueue("Item2", -1);
     }
     
     @Test
@@ -32,7 +37,7 @@ public class PriorityQueueJUnitTest {
     }
 
     @Test
-    public void test_getHighestPriority_WhenTwoOrMoreItemsHavingSamePriority_ReturnOnBasisOfFCFS() {
+    public void test_getHighestPriority_WhenTwoOrMoreItemsHavingSamePriority_ReturnPriorityOnBasisOfFirstComeFirstServe() {
         assertEquals(true, queue.enqueue("Item1", 1));
         assertEquals(true, queue.enqueue("Item2", 10));
         assertEquals(true, queue.enqueue("Item3", 10));
@@ -41,23 +46,42 @@ public class PriorityQueueJUnitTest {
         assertEquals("Item2", queue.getHighestPriorityItem());
     }
 
-    @Test
-    public void test_getHighestPriority_WhenQueueIsEmpty_ReturnNegativeValue() {
-        assertEquals(-1, queue.getHighestPriority());
+    @Test(expected = AssertionError.class)
+    public void test_getHighestPriority_WhenQueueIsEmpty_ThrowAssertionError() {
+        assertEquals(true, queue.isEmpty());
+        queue.getHighestPriority();
+    }
+
+    @Test(expected = AssertionError.class)
+    public void test_getHighestPriorityItem_WhenQueueIsEmpty_ReturnNegativeValue() {
+        assertEquals(true, queue.isEmpty());
+        queue.getHighestPriorityItem();
     }
 
     @Test
     public void test_dequeueHighestPriority_WhenAllItemsHavingDifferentPriority_ReturnItemOfHighestPriority() {
         assertEquals(true, queue.enqueue("Item1", 1));
         assertEquals(true, queue.enqueue("Item2", 10));
-        assertEquals(true, queue.enqueue("Item3", 5));
-        assertEquals(true, queue.enqueue("Item4", 4));
-        assertEquals("Item2", queue.dequeueHighestPriority());
-        assertEquals("Item3", queue.dequeueHighestPriority());
+        assertEquals(true, queue.enqueue("Item3", 4));
+        assertEquals(true, queue.enqueue("Item4", 6));
+        assertEquals("Item2", queue.dequeueHighestPriorityItem());
+        assertEquals("Item4", queue.dequeueHighestPriorityItem());
+    }
+
+    @Test(expected = AssertionError.class)
+    public void test_dequeueHighestPriority_WhenQueueIsEmpty_ThrowAssertionError() {
+        queue.dequeueHighestPriorityItem();
     }
 
     @Test
-    public void test_dequeueHighestPriority_WhenQueueIsEmpty_ReturnNull() {
-        assertEquals(null, queue.dequeueHighestPriority());
+    public void test_checksIfQueueIsEmptyOrNot_WhenQueueIsEmpty_ReturnTrue() {
+        assertEquals(true, queue.isEmpty());
+    }
+
+    @Test
+    public void test_checksIfQueueIsEmptyOrNot_WhenQueueIsNotEmpty_ReturnFalse() {
+        assertEquals(true, queue.enqueue("Item3", 5));
+        assertEquals(true, queue.enqueue("Item4", 4));
+        assertEquals(false, queue.isEmpty());
     }
 }

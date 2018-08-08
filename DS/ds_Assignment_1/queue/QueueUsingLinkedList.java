@@ -4,41 +4,58 @@ class Node {
 	int data;
 	Node next;
 	
-	public Node(int data)
-	{
+	public Node(int data) {
 		this.data = data;
 	}
 }
 
-public class QueueUsingLinkedList {
-	Node start, end;
+public class QueueUsingLinkedList implements Queue{
+	Node front, rear;
 	
 	public QueueUsingLinkedList() {
-		start = null;
-		end = null;
-	}
-	
-	public boolean add(int data) {
-		Node newNode = new Node(data);
-		
-		if(start == null)
-			start = newNode;
-		
-		newNode.next = null;
-		end = newNode;
-		return true;
-	}
-	
-	public boolean delete() {
-		if(isEmpty()) 
-			return false;
-		
-		start = start.next;
-		return true;
-	}
-	
-	public boolean isEmpty() {
-		return (end == null);
+		front = null;
+		rear = null;
 	}
 
+	@Override
+	public boolean enqueue(int value) {
+		Node newNode = new Node(value);
+		
+		if(front == null || rear == null) {
+			front = newNode;
+			rear = newNode;
+			newNode.next = null;
+			return true;
+		} 
+		else {
+			rear.next = newNode;
+			rear = rear.next;
+		}
+		
+		newNode.next = null;
+		return true;
+	}
+
+	@Override
+	public int dequeue() {
+		if(isEmpty()) 
+			return -1;
+		
+		int item = front.data;
+		front = front.next;
+		return item;
+	}
+
+	@Override
+	public int peek() {
+		if (front == null) {
+            return -1;
+        } else {
+            return front.data;
+        }
+	}
+
+	public boolean isEmpty() {
+		return (front == null);
+	}
 }

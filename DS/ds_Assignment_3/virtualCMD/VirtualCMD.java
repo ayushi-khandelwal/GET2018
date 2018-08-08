@@ -20,15 +20,6 @@ public class VirtualCMD {
             System.out.print(getFullPath(currentDir) + "> ");
             Scanner scan = new Scanner(System.in);
             command = scan.nextLine().trim();
-             
-            /*String prompt = currentDir.getName();
-
-            Directory temp = currentDir;
-            while (temp.getParent() != null) {
-                prompt = temp.getParent().getName() + "/" + prompt + "";
-                temp = temp.getParent();
-            }
-            System.out.print(prompt + "> ");*/
 
             switch (command.split(" ")[0]) {
             case "mkdir":
