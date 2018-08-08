@@ -1,10 +1,7 @@
-/**
- * 
- */
 package ds_Assignment_4.employee_management;
 
 /**
- * @author Ayushi
+ * @author Ayushi Khandelwal
  *
  */
 public class Employee {
@@ -12,28 +9,33 @@ public class Employee {
     private String name;
     private String address;
     
+    /**
+     * @param id
+     * @param name
+     * @param address
+     */
     public Employee(String id, String name, String address) {
-        ID = id;
+        this.ID = id;
         this.name = name;
         this.address = address;
     }
 
     /**
-     * @return the iD
+     * @return id
      */
-    public String getID() {
+    public String getId() {
         return ID;
     }
-
+   
     /**
-     * @return the name
+     * @return name
      */
     public String getName() {
         return name;
     }
-
+    
     /**
-     * @return the address
+     * @return address
      */
     public String getAddress() {
         return address;
