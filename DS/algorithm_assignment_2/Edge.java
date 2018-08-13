@@ -22,4 +22,17 @@ public class Edge {
     public char getNode2() {
         return node2;
     }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public void setNode1(char node1) {
+        this.node1 = node1;
+    }
+
+    public void setNode2(char node2) {
+        this.node2 = node2;
+    }
+
 }

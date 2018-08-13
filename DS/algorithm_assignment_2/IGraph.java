@@ -1,10 +1,10 @@
 package algorithm_assignment_2;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IGraph {
-    public boolean isConnected();
-    public List<Edge> reachable(Edge reachableNode);
-    public List<Edge> minimumSpanningTree();
-    public List<Edge> shortestPath(Edge node1, Edge node2);
+    public boolean isConnected(List<Edge> edgeList);
+    public Set<Character> reachable(char reachableNode, List<Edge> edgeList);
+    public List<Edge> minimumSpanningTree(List<Edge> edgeList);
 }
