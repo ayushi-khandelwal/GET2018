@@ -1,0 +1,21 @@
+Assignment 1
+
+1. Participating entities :-
+ CATEGORY, PRODUCT, IMAGE, ADDRESS, USER, OREDR, PRODUCT-IN-ORDER
+
+2. Relations :- 
+'has' between CATEGORY and PRODUCT, 
+'has' between IMAGE and PRODUCT, 
+'can_select' between USER and PRODUCT, 
+'has' between ADDRESS and USER, 
+'can_order' between USER and ORDER,
+'has' between ORDER and PRODUCT_IN_ORDER
+
+3. Key Attributes:-
+category_id in CATEGORY table
+product_id in PRODUCT table
+image_id in IMAGE table
+address_id in ADDRESS table
+user_id and email in USER table
+order_id in ORDER table
+order_id and product_id in PRODUCT_IN_ORDER table 
