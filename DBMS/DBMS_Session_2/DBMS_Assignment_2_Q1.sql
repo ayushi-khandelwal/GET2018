@@ -1,87 +1,118 @@
-DROP DATABASE StoreFront;
 
+/*
+*  SQL file containing script for creating database and tables
+*/
+DROP DATABASE StoreFront;
 CREATE DATABASE StoreFront;
 USE StoreFront;
-  
-CREATE TABLE user(
-    user_id INT NOT NULL,
-    name VARCHAR(30),
-    phone INT,
-    dob DATE,
-    email VARCHAR(50) NOT NULL,
-    password VARCHAR(20),
-    user_type VARCHAR(20),
-    PRIMARY KEY(user_id));
 
-CREATE TABLE address(
-   address_id INT NOT NULL,
-   user_id INT,
-   area VARCHAR(50),
-   city VARCHAR(30),
-   state VARCHAR(30),
-   country VARCHAR(30),
-   FOREIGN KEY(user_id) REFERENCES user(user_id),
-   PRIMARY KEY(address_id));
-  
-CREATE TABLE category(
-    category_id INT AUTO_INCREMENT, 
-    category_name VARCHAR(255) NOT NULL,
-    parent_category VARCHAR(255) NOT NULL, 
-    PRIMARY KEY (category_id));
-  
-CREATE TABLE product(
-    product_id INT AUTO_INCREMENT, 
-    product_title VARCHAR(255) NOT NULL, 
-    product_description VARCHAR(255), 
-    quantity VARCHAR(255) NOT NULL, 
-    category_id INT, 
-    unit_price INT NOT NULL, 
-    FOREIGN KEY(category_id) REFERENCES category(category_id), 
-    PRIMARY KEY (product_id));
+CREATE TABLE Category(
+    Category_Id INT NOT NULL AUTO_INCREMENT,
+    Category_Name VARCHAR(20),
+    Parent_Category INT,
+    PRIMARY KEY(Category_Id)
+);
 
-CREATE TABLE image(
-   image_id INT NOT NULL,
-   image_name VARCHAR(30),
-   product_id INT,
-   image_URL VARCHAR(30),
-   PRIMARY KEY(image_id),
-   FOREIGN KEY(product_id) REFERENCES product(product_id));
+CREATE TABLE Product(
+    Product_Id INT NOT NULL AUTO_INCREMENT,
+    Product_Title VARCHAR(30),
+    Product_Description VARCHAR(200),
+    Unit_Price INT,
+    Stock_Quantity INT,
+    Issue_Date DATE,
+    PRIMARY KEY(Product_Id)
+);
 
-CREATE TABLE orders(
-   order_id INT NOT NULL,
-   user_id int,
-   order_date DATE,
-   order_amount INT,
-   shipping_address VARCHAR(300),
-   order_status varchar(12),
-   PRIMARY KEY(order_id),
-   FOREIGN KEY(user_id) REFERENCES user(user_id));
+CREATE TABLE Product_Category (
+    Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Product_Id INT NOT NULL,
+    Category_Id INT NOT NULL,
+    FOREIGN KEY(Product_Id) REFERENCES Product(Product_Id),
+    FOREIGN KEY(Category_Id) REFERENCES Category(Category_Id)
+);
 
-CREATE TABLE products_in_order (
-   order_id INT,
-   product_id INT,
-   status VARCHAR(20));
-   
-SHOW TABLES;
+CREATE TABLE Image(
+    Image_Id INT NOT NULL AUTO_INCREMENT,
+    Product_Id INT,
+    Image_URL VARCHAR(30),
+    PRIMARY KEY(Image_Id),
+    FOREIGN KEY(Product_Id) REFERENCES Product(Product_Id)
+); 
 
-DROP TABLE image;
-DROP TABLE product;
+CREATE TABLE User(
+    User_Id INT NOT NULL AUTO_INCREMENT,
+    User_Name VARCHAR(30),
+    User_Mail VARCHAR(50) NOT NULL,
+    Birth_Date DATE,
+    Contact_No INT,
+    PRIMARY KEY(User_Id)
+);
 
-CREATE TABLE product(
-    product_id INT AUTO_INCREMENT, 
-    product_title VARCHAR(255) NOT NULL, 
-    product_description VARCHAR(255), 
-    quantity VARCHAR(255) NOT NULL, 
-    category_id INT, 
-    unit_price INT NOT NULL, 
-    FOREIGN KEY(category_id) REFERENCES category(category_id), 
-    PRIMARY KEY (product_id));
+CREATE TABLE Address(
+    Address_Id INT NOT NULL AUTO_INCREMENT,
+    User_Id INT,
+    Area VARCHAR(200),
+    City VARCHAR(30),
+    Zipcode INT,
+    State VARCHAR(30),
+    Country VARCHAR(30),
+    FOREIGN KEY(User_Id) REFERENCES User(User_Id),
+    PRIMARY KEY(Address_Id)
+);
 
-CREATE TABLE image(
-   image_id INT NOT NULL,
-   image_name VARCHAR(30),
-   product_id INT,
-   image_URL VARCHAR(30),
-   PRIMARY KEY(image_id),
-   FOREIGN KEY(product_id) REFERENCES product(product_id));
+CREATE TABLE Login(
+    User_Id int,
+    Password VARCHAR(10),
+    User_Role VARCHAR(30),
+    Last_Login DATE,
+    FOREIGN KEY(User_Id) REFERENCES User(User_Id)
+);
 
+CREATE TABLE Orders(
+    Order_Id INT NOT NULL AUTO_INCREMENT,
+    User_Id int,
+    Order_Date DATE,
+    Order_Amount INT,
+    Shipping_Address VARCHAR(300),
+    Order_Status varchar(12),
+    PRIMARY KEY(Order_Id),
+    FOREIGN KEY(User_Id) REFERENCES User(User_Id)
+);
+
+CREATE TABLE Products_In_Order (
+    Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Order_Id INT,
+    Product_Id INT,
+    Quantity INT,
+    status VARCHAR(12)
+);
+
+DROP TABLE Image;
+DROP TABLE Product_Category;
+DROP TABLE Product;
+
+CREATE TABLE Product(
+    Product_Id INT NOT NULL AUTO_INCREMENT,
+    Product_Title VARCHAR(30),
+    Product_Description VARCHAR(200),
+    Unit_Price INT,
+    Stock_Quantity INT,
+    Issue_Date DATE,
+    PRIMARY KEY(Product_Id)
+);
+
+CREATE TABLE Product_Category (
+    Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Product_Id INT NOT NULL,
+    Category_Id INT NOT NULL,
+    FOREIGN KEY(Product_Id) REFERENCES Product(Product_Id),
+    FOREIGN KEY(Category_Id) REFERENCES Category(Category_Id)
+);
+
+CREATE TABLE Image(
+    Image_Id INT NOT NULL AUTO_INCREMENT,
+    Product_Id INT,
+    Image_URL VARCHAR(30),
+    PRIMARY KEY(Image_Id),
+    FOREIGN KEY(Product_Id) REFERENCES Product(Product_Id)
+); 
