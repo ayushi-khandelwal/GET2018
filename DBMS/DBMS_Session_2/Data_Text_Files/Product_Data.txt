@@ -1,24 +1,18 @@
-sennhieser cx180	headphones for all devices	69	80	2018-12-12
-Levis formal shirts	formal shirts suitable for men	29	100	2018-12-01
-Whey Proteins	Protein powder for fitness freaks	10	0	2018-12-05
-Pegion Inductions	electric cooktops for kitchen	190	102	2018-11-12
-sennhieser cx230	headphones for music lovers with mic	129	0	2018-04-12
-Allen Solly formal shirts	formal shirts suitable for men	2100	150	2018-11-22
+sennhieser	headphones for all devices	69	0	2018-01-01
+Levis formal shirts	formal shirts suitable for men	29	100	2018-02-21
+Whey Proteins	Protein powder for fitness freaks	10	0	2018-03-05
+Pegion Inductions	electric cooktops for kitchen	190	102	2018-03-12
+Allen Solly formal shirts	formal shirts suitable for men	2100	150	2018-05-22
 Proteinex	Protein powder for kids	600	68	2018-02-02
-Philips Toaster Tst 12	Toasters for kitchen	700	75	2018-02-25
-spykar sx 1009	jeans for men	2100	25	2018-05-12
-JBL cs100	headphones for music lovers from jbl	49	60	2018-07-12
-UCB Polo teeshirts	Polo teeshirts suitable for men	900	120	2018-12-30
-Whey WH110	Protein powder for body builders	2000	75	2018-08-16
-Surya gas stoves	LPG Stoves for kitchen	900	80	2018-11-19
+Philips Toaster	Toasters for kitchen	700	75	2018-02-25
+spykar	jeans for men	2100	25	2018-05-12
+JBL	headphones for music lovers from jbl	49	60	2018-07-12
+UCB Polo teeshirts	Polo teeshirts suitable for men	900	120	2018-08-03
+Surya gas stoves	LPG Stoves for kitchen	900	80	2018-01-19
 Denim rugged	jeans for men	1500	110	2018-02-11
 phillips trimmer	Trimmer for men	1499	90	2018-06-22
 Lee lj010	regular jeans suitable for men	1800	170	2018-03-22
-MI LED	Protein powder for body builders	2000	75	2018-12-15
-Surya gas stoves sg2	LPG Stoves for kitchen	1000	85	2018-05-08
-Denim rugged rx	jeans for men	1700	170	2018-01-01
-phillips trimmer01	Trimmer for men	1599	90	2018-02-02
-Lee lj01010	regular jeans suitable for men	1900	170	2018-03-12
-MI LED 2	Protein powder for body builders	20	75	2018-07-02
-Surya gas stoves sg24	LPG Stoves for kitchen	1500	85	2018-06-06
-Denim rugged rx01	jeans for men	1500	170	2018-04-09
+MI LED	Protein powder for body builders	2000	40	2018-07-15
+phillips trimmer	Trimmer for men	1599	90	2018-02-02
+Lee gg	regular jeans suitable for men	1900	170	2018-03-12
+MI LED2	Protein powder for body builders	30	45	2018-07-02
