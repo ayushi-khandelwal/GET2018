@@ -1,11 +1,10 @@
-package DBMS.DBMS_Session_5.assignment_4;
+package DBMS_Session_5.assignment_4;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Class for storing results of OrderDetails
- * Created on August 21, 2018
  */
 public class CategoriesInParentCategoryPOJO {
 	private static List<CategoriesInParentCategoryPOJO> resultList = new ArrayList<CategoriesInParentCategoryPOJO>();

@@ -1,4 +1,4 @@
-package DBMS.DBMS_Session_5.jdbcConnection;
+package DBMS_Session_5.jdbcConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

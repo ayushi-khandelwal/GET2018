@@ -1,4 +1,4 @@
-package DBMS.DBMS_Session_5.assignment_2;
+package DBMS_Session_5.assignment_2;
 
 import static org.junit.Assert.*;
 
@@ -8,7 +8,6 @@ import org.junit.Test;
 
 /**
  * Class containing test methods
- * Created on August 21, 2018
  */
 public class BatchInsertionTest {
 
