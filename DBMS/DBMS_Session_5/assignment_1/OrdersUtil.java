@@ -24,21 +24,29 @@ public class OrdersUtil {
                         				+ "WHERE (Orders.User_Id = " + userId + " "
                         				        + "AND Order_Status.OrderStatus LIKE \"%shipped%\") "
                         		        + "ORDER BY Orders.Order_Date DESC";
-		PreparedStatement preparedStatement = connection.prepareStatement(queryToGetOrderDetails);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()) {
-            resultSet.previous();
-            while(resultSet.next()) {
-                OrdersUtilPOJO.addToResultList(new OrdersUtilPOJO(resultSet.getString("User_Id"), 
-                                                                        resultSet.getString("Order_Id"),
-                                                                        resultSet.getString("Order_Date"),
-                                                                        resultSet.getString("Order_Amount")));
-            }
-        } else {
-            System.out.println("No Orders information for this User !\n");
-        }
-        connection.close();
-        orderList = OrdersUtilPOJO.getResultList();
-        return orderList;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(queryToGetOrderDetails);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				resultSet.previous();
+				while(resultSet.next()) {
+					OrdersUtilPOJO.addToResultList(new OrdersUtilPOJO(resultSet.getString("User_Id"), 
+											resultSet.getString("Order_Id"),
+											resultSet.getString("Order_Date"),
+											resultSet.getString("Order_Amount")));
+				}
+			} else {
+			    System.out.println("No Orders information for this User !\n");
+			}
+		}
+		catch(SQLException se) {
+			se.getMessage();
+		}
+		catch(Exception e) {
+			e.getMessage();
+		}
+		connection.close();
+		orderList = OrdersUtilPOJO.getResultList();
+		return orderList;
 	}
 }
