@@ -9,7 +9,7 @@ import DBMS_Session_5.jdbcConnection.JDBCConnection;
 /**
  * Class containing method to insert batch records
  */
-public class BatchInsertion {
+public class ImageUtil {
 	private Connection connection;
 	
 	/**
@@ -34,6 +34,10 @@ public class BatchInsertion {
 		} 
 		catch (SQLException se) {
 			System.out.println("SQL Exception occurred !");
+			connection.rollback();
+		}
+		catch (Exception e) {
+			System.out.println("Exception occurred !");
 			connection.rollback();
 		}
 		connection.close();
