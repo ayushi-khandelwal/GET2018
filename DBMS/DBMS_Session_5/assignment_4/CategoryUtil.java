@@ -11,14 +11,14 @@ import DBMS_Session_5.jdbcConnection.JDBCConnection;
 /**
  * Class containing method to get number of child categories
  */
-public class CategoriesInParentCategory {
+public class CategoryUtil {
 	private Connection connection;
 	
 	/**
 	 * Method to get Category title and count of its child categories
 	 * @return list of POJO consisting data
 	 */
-	public List<CategoriesInParentCategoryPOJO> getChildCategoryCount () throws SQLException {
+	public List<CategoryUtilPOJO> getChildCategoryCount () throws SQLException {
 		connection=JDBCConnection.getDatabaseConnection("StoreFront", "root", "pass123");
 
 		String queryToGetChildCategoryCount = 
@@ -32,10 +32,10 @@ public class CategoriesInParentCategory {
 		ResultSet resultSet = preparedStatement.executeQuery();
 	
 		while(resultSet.next()){
-			CategoriesInParentCategoryPOJO.addToResultList(new CategoriesInParentCategoryPOJO(resultSet.getString("Category_Name"),
+			CategoryUtilPOJO.addToResultList(new CategoryUtilPOJO(resultSet.getString("Category_Name"),
 					resultSet.getInt("count_Of_Child")));
 		}
 		connection.close();
-		return CategoriesInParentCategoryPOJO.getResultList();
+		return CategoryUtilPOJO.getResultList();
 	}
 }
