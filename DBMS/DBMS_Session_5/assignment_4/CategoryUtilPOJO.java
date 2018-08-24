@@ -6,22 +6,22 @@ import java.util.List;
 /**
  * Class for storing results of OrderDetails
  */
-public class CategoriesInParentCategoryPOJO {
-	private static List<CategoriesInParentCategoryPOJO> resultList = new ArrayList<CategoriesInParentCategoryPOJO>();
+public class CategoryUtilPOJO {
+	private static List<CategoryUtilPOJO> resultList = new ArrayList<CategoryUtilPOJO>();
 	
 	private String categoryName;
 	private int categoryCount;
 	
-	public CategoriesInParentCategoryPOJO (String categoryName, int categoryCount) {
+	public CategoryUtilPOJO (String categoryName, int categoryCount) {
 		this.categoryName = categoryName;
 		this.categoryCount = categoryCount;
 	}
 
-	public static List<CategoriesInParentCategoryPOJO> getResultList() {
+	public static List<CategoryUtilPOJO> getResultList() {
 		return resultList;
 	}
 
-	public static void addToResultList(CategoriesInParentCategoryPOJO result) {
+	public static void addToResultList(CategoryUtilPOJO result) {
 		resultList.add(result);
 	}
 
