@@ -19,21 +19,31 @@ public class CategoryUtil {
 	 * @return list of POJO consisting data
 	 */
 	public List<CategoryUtilPOJO> getChildCategoryCount () throws SQLException {
-		connection=JDBCConnection.getDatabaseConnection("StoreFront", "root", "pass123");
+		try {
+			connection=JDBCConnection.getDatabaseConnection("StoreFront", "root", "pass123");
 
-		String queryToGetChildCategoryCount = 
-		        "SELECT c.Category_Name, Count(c1.Category_Id) AS count_Of_Child FROM category c "
-				+ "LEFT JOIN category c1 ON c.category_Id=c1.Parent_category "
-				+ "WHERE c.Parent_category=0 "
-				+ "GROUP BY c.category_Name "
-				+ "ORDER BY c.Category_Name"; 
-		
-		PreparedStatement preparedStatement = connection.prepareStatement(queryToGetChildCategoryCount);
-		ResultSet resultSet = preparedStatement.executeQuery();
-	
-		while(resultSet.next()){
-			CategoryUtilPOJO.addToResultList(new CategoryUtilPOJO(resultSet.getString("Category_Name"),
-					resultSet.getInt("count_Of_Child")));
+			String queryToGetChildCategoryCount = 
+				"SELECT c.Category_Name, Count(c1.Category_Id) AS count_Of_Child FROM category c "
+					+ "LEFT JOIN category c1 ON c.category_Id=c1.Parent_category "
+					+ "WHERE c.Parent_category=0 "
+					+ "GROUP BY c.category_Name "
+					+ "ORDER BY c.Category_Name"; 
+
+			PreparedStatement preparedStatement = connection.prepareStatement(queryToGetChildCategoryCount);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while(resultSet.next()){
+				CategoryUtilPOJO.addToResultList(new CategoryUtilPOJO(resultSet.getString("Category_Name"),
+						resultSet.getInt("count_Of_Child")));
+			}
+		}
+		catch (SQLException se) {
+			System.out.println("SQL Exception occurred !");
+			connection.rollback();
+		}
+		catch (Exception e) {
+			System.out.println("Exception occurred !");
+			connection.rollback();
 		}
 		connection.close();
 		return CategoryUtilPOJO.getResultList();
