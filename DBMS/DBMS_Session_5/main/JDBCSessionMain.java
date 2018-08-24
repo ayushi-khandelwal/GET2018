@@ -5,12 +5,12 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import DBMS_Session_5.assignment_1.OrderDetails;
-import DBMS_Session_5.assignment_1.OrdersDetailsPOJO;
-import DBMS_Session_5.assignment_2.BatchInsertion;
-import DBMS_Session_5.assignment_3.ProductDeletion;
-import DBMS_Session_5.assignment_4.CategoriesInParentCategory;
-import DBMS_Session_5.assignment_4.CategoriesInParentCategoryPOJO;
+import DBMS_Session_5.assignment_1.OrdersUtil;
+import DBMS_Session_5.assignment_1.OrdersUtilPOJO;
+import DBMS_Session_5.assignment_2.ImageUtil;
+import DBMS_Session_5.assignment_3.ProductUtil;
+import DBMS_Session_5.assignment_4.CategoryUtil;
+import DBMS_Session_5.assignment_4.CategoryUtilPOJO;
 
 public class JDBCSessionMain {
 	public static void main (String args[]) {
@@ -27,37 +27,37 @@ public class JDBCSessionMain {
 				choice = scanner.nextInt();
 				switch (choice) {
     				case 1:
-    					OrderDetails orderDetails = new OrderDetails();
+    					OrdersUtil orderUtil = new OrdersUtil();
     					System.out.println("Enter user Id:");
-    					List<OrdersDetailsPOJO> resultList = orderDetails.getOrderDetailsOfUser(scanner.nextInt());
+    					List<OrdersUtilPOJO> resultList = orderUtil.getOrderDetailsOfUser(scanner.nextInt());
     					System.out.println("Number Of Records :" + resultList.size() + "\n");
     					
-    					for (OrdersDetailsPOJO value : resultList) {
-                            System.out.println("USER ID: " + value.getUserId());
+    					for (OrdersUtilPOJO value : resultList) {
+                            			System.out.println("USER ID: " + value.getUserId());
     						System.out.println("ORDER ID: " + value.getOrderId());
     						System.out.println("ORDER DATE: " + value.getOrderDate());
     						System.out.println("ORDER AMOUNT: " + value.getOrderAmount());
     						System.out.println("-------------------------------------------------------\n");
     					}
-    					OrdersDetailsPOJO.emptyList();
+    					OrdersUtilPOJO.emptyList();
     					break;
     				
     				case 2:
-    					BatchInsertion batchInsertion = new BatchInsertion();
-    					System.out.println(batchInsertion.insertBatchIntoImageTable() + " Rows added as batch !\n");
+    					ImageUtil imageUtil = new ImageUtil();
+    					System.out.println(imageUtil.insertBatchIntoImageTable() + " Rows added as batch !\n");
     					System.out.println("-------------------------------------------------------\n");
     					break;
     					
     				case 3:
-    					ProductDeletion productDeletion = new ProductDeletion();
-    					System.out.println(productDeletion.deleteProductsNotPurchased() + " Products Status Changed to Inactive !\n");
+    					ProductUtil productUtil = new ProductUtil();
+    					System.out.println(productUtil.deleteProductsNotPurchased() + " Products Status Changed to Inactive !\n");
     					System.out.println("-------------------------------------------------------\n");
     					break;
     					
     				case 4:
-    					CategoriesInParentCategory categoriesInParentCategory = new CategoriesInParentCategory();
-    					List<CategoriesInParentCategoryPOJO> list = categoriesInParentCategory.getChildCategoryCount();
-    					for(CategoriesInParentCategoryPOJO val : list){
+    					CategoryUtil categoryUtil = new CategoryUtil();
+    					List<CategoryUtilPOJO> list = categoryUtil.getChildCategoryCount();
+    					for(CategoryUtilPOJO val : list){
     						System.out.println(val.getCategoryName() + "  " + val.getCategoryCount());
     					}
     					System.out.println("-------------------------------------------------------\n");					
