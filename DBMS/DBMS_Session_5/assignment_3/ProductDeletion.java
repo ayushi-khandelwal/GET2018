@@ -11,7 +11,7 @@ import DBMS_Session_5.jdbcConnection.JDBCConnection;
 /**
  * Class containing method to delete products as mentioned
  */
-public class ProductDeletion {
+public class ProductUtil {
 	private Connection connection;
 	/**
 	 * Method deletes the Products which are not ordered from 1 year
@@ -21,11 +21,11 @@ public class ProductDeletion {
 		connection = JDBCConnection.getDatabaseConnection("StoreFront", "root", "pass123");
 		int result=0;
 		String queryToDeleteProduct = 
-		        "UPDATE Product SET Product.Stock_Quantity = 0 "
-				+ "WHERE Product_Id NOT IN (SELECT Order_Status.Product_Id "
-			                            + "FROM Order_Status "
-			                                + " LEFT JOIN Orders ON Order_Status.Order_Id = Orders.Order_Id "
-                                        + "WHERE DATEDIFF(now(), Orders.Order_Date) < 365)";	
+		        "UPDATE Product SET Product.Product_Status = "Inactive" 
+			WHERE Product_Id NOT IN (SELECT Order_Status.Product_Id 
+                        FROM Order_Status 
+                        LEFT JOIN Orders ON Order_Status.Order_Id = Orders.Order_Id 
+                        WHERE DATEDIFF(now(), Orders.Order_Date) < 365);";	
 		
 		PreparedStatement psForDeleteProduct = connection.prepareStatement(queryToDeleteProduct);
 		result = psForDeleteProduct.executeUpdate();
