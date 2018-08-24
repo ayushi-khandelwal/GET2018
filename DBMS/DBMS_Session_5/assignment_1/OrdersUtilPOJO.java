@@ -6,32 +6,32 @@ import java.util.List;
 /**
  * Class for storing results of OrderDetails
  */
-public class OrdersDetailsPOJO {
-	private static List<OrdersDetailsPOJO> resultList = new ArrayList<OrdersDetailsPOJO>();
+public class OrdersUtilPOJO {
+	private static List<OrdersUtilPOJO> resultList = new ArrayList<OrdersUtilPOJO>();
 	
-    private String userId;
+    	private String userId;
 	private String orderId;
 	private String orderDate;
 	private String orderAmount;
 	
-	public OrdersDetailsPOJO (String userId, String orderId, String orderDate, String orderAmount) {
+	public OrdersUtilPOJO (String userId, String orderId, String orderDate, String orderAmount) {
 		this.orderId = orderId;
 		this.orderDate = orderDate;
 		this.orderAmount = orderAmount;
 		this.userId = userId;
 	}
 
-	public static List<OrdersDetailsPOJO> getResultList() {
+	public static List<OrdersUtilPOJO> getResultList() {
 		return resultList;
 	}
 
-	public static void addToResultList(OrdersDetailsPOJO result) {
+	public static void addToResultList(OrdersUtilPOJO result) {
 		resultList.add(result);
 	}
 
-    public String getUserId() {
-        return userId;
-    }
+	public String getUserId() {
+		return userId;
+	}
 
 	public String getOrderId() {
 		return orderId;
@@ -45,7 +45,7 @@ public class OrdersDetailsPOJO {
 		return orderAmount;
 	}
 
-    public static void emptyList() {
-       resultList.removeAll(resultList);
-    }
+	public static void emptyList() {
+       		resultList.removeAll(resultList);
+    	}
 }
