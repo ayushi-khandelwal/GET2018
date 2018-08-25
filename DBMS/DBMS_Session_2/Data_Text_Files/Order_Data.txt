@@ -1,0 +1,11 @@
+3	2018-08-01	3000	Metacube Softwares ltd, Sitapura
+4	2018-08-03	4000	Metacube Softwares ltd, Mahindra sales
+5	2018-07-22	1500	Metacube Softwares ltd, sodala
+3	2018-08-06	2000	Metacube Softwares ltd, vaishali nagar
+5	2018-08-07	4000	abc Softwares ltd, Sitapura
+5	2018-07-10	2000	xyz Softwares ltd, Sitapura
+4	2018-08-12	4000	ghi Softwares ltd, Sitapura
+9	2018-07-18	5000	ony Softwares ltd, Sitapura
+1	2018-06-14	9000	clc Softwares ltd, Sitapura
+8	2018-07-15	1000	hello Softwares ltd, Sitapura
+1	2018-08-18	10000	clc Softwares ltd, Sitapura
