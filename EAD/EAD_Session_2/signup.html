@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>
+			SignUp
+		</title>
+		
+		<script src="validationScripts.js"></script>
+		
+	</head>
+	
+	<body width = 60%>
+		<table width = 60% align = "center">
+			<tr>
+				<td colspan = "1">
+					<img src = "images\html_logo.png" alt = "HTML Logo" height="50" width="50">
+				</td>
+				<td align = "right">
+					<a href = "" margin-right = "10">Home</a>
+					<a href = "about.html" margin-right = "10">About</a>
+					<a href = "" margin-right = "10">Product</a>
+					<a href = "" margin-right = "10">Gallery</a>
+					<a href = "contact.html" margin-right = "10">Contact</a>
+					<a href = "login.html" margin-right = "10">Login</a>
+					<a href = "#" margin-right = "10">New User??</a>
+				</td>
+			</tr>
+		</table>
+		
+		<hr width = 70%/>
+		
+		<br/>
+		<form action = "login.html" onsubmit = "return checkSignupValidation()">
+			<table align = "center">
+			<br/>
+			<h1 align = "center">Registration !!</h1>
+			<br/>
+				<tr>
+					<td>First Name</td>
+					<td><input type = "text" id = "firstName" placeholder = "Enter first name"></td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td><input type = "text" id = "lastName" placeholder = "Enter last name"></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type = "email" id = "email" placeholder = "Enter email"></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type = "password" id = "password" placeholder = "Enter password"></td>
+				</tr>
+				<tr>
+					<td>Confirm Password</td>
+					<td><input type = "password" id = "confirmPassword" placeholder = "Enter password again"></td>
+				</tr>
+				<tr>
+					<td>Contact Number</td>
+					<td><input type = "number" id = "contactNumber" placeholder = "Enter contact number"></td>
+				</tr>
+				<tr>
+					<td>Company/Institution</td>
+					<td>
+						<select id="Company">
+							<option value="null" disabled selected>Select your option</option>
+							<option value="Metacube">Metacube</option>
+							<option value="TCS">TCS</option>
+							<option value="Infosys">Infosys</option>
+							<option value="Google">Google</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan = "2" align = "center">
+						<input type = "submit" id = "signUp" value = "Proceed">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
