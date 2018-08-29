@@ -77,7 +77,7 @@ function validateConfirmPassword() {
 }
 
 function validateContactNumber() {
-	if(document.getElementById("contactNumber").value.length <= 8) {
+	if(document.getElementById("contactNumber").value.length < 8) {
 		alert("Number should be of atleast 8 characters!!");
 		document.getElementById("contactNumber").focus();
 		return false;
