@@ -1,4 +1,3 @@
-
 function checkSignupValidation() {
 	return (validateFirstName() && validateLastName() && 
 	validateEmail() && validatePassword() && validateConfirmPassword() &&
@@ -38,12 +37,7 @@ function validateLastName() {
 }
 
 function validateEmail() {
-	if(document.getElementById("email").value.length < 6) {
-		alert("Email should contains atleast 6 characters");
-		document.getElementById("email").focus();
-		return false;
-	}
-	else if(!(/^\w+([\.-]?\w+)*@[a-zA-Z]+(\.[a-zA-Z]{2,3})+$/.test(document.getElementById("email").value))) {
+	if(!(/^\w+([\.-]?\w+)*@[a-zA-Z]+(\.[a-zA-Z]{2,3})+$/.test(document.getElementById("email").value))) {
 		alert("Email should contains '@', '.'");
 		document.getElementById("email").focus();
 		return false;
@@ -59,7 +53,7 @@ function validatePassword() {
 	}
 	
 	else if(!(/^[A-Z]+[a-z]+[0-9]+$/.test(document.getElementById("password").value))) {
-		alert("Password  should contains Uppercase, Lowercase, Numeric, Alphanumeric!!");
+		alert("Password should contain Uppercase, Lowercase, Numeric, Alphanumeric characters!!");
 		document.getElementById("password").focus();
 		return false;
 	}
