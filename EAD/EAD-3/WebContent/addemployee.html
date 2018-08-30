@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>	
+	<script src = "script/script.js">
+	</script>
+	<table width=100%>
+			<tr>
+				<td><img src="images/metacube_logo.png" height="20%" ></td>
+				<td align="right" style="text-decoration:none; "><font size = "4">
+					<a href="home.html">Home</a></font><span><font size = "4"> | Contact Us</font></span></td>
+			</tr>
+		</table>
+		<hr/>
+		
+		<h1 align="center">Employee Details</h1>
+
+
+		<form align="center" action = "AddEmployeeDetails"  onsubmit = "return validate()"  >
+			<table align="center" cellspacing="10px">
+				<tr>
+					<td  width="100px" align="Left">First Name:</td>
+					<td><input type="text" id="firstname" name="firstName" placeholder="Enter First Name" oninput="this.setCustomValidity('')" required  /></td>
+				</tr>
+				<tr>
+					<td  width="100px" align="Left">Last Name:</td>
+					<td><input type="text" id="lastname"  name="lastName" placeholder="Enter Last Name" oninput="this.setCustomValidity('')" required/></td>
+				</tr>
+				<tr>
+					<td  width="100px" align="Left">Email:</td>
+					<td><input type="text" id="email" name="email" placeholder="Enter Your Email" oninput="this.setCustomValidity('')" required/></td>
+				</tr>
+				<tr>
+					<td  width="100px" align="Left">Age:</td>
+					<td><input type="age" id="age" name="age" placeholder="Enter Your Age" oninput="this.setCustomValidity('')" required/></td>
+				</tr>
+				<tr>
+					<td colspan="2" width="100px" align="center">
+						<br>
+						<input type="submit" value="Submit"  >
+					</td>
+				</tr>
+			</table>
+		</form>
+
+		<footer style="margin-top: 5%"> <hr /><p align="center">&copy;Copyright 2016-17 | All Rights Reserved | Metacube
+		Training</p>
+	</footer>
+</body>
+</html>
