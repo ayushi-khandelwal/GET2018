@@ -26,7 +26,6 @@ public class GetEmployeeFullDetails extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         String email = request.getParameter("hiddenId");
-        System.out.print("HEY "+ email);
         Connection connection=JDBCConnection.getDatabaseConnection("MetacubeDB", "root", "pass123");
         
         if(connection!=null) {

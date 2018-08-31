@@ -58,7 +58,6 @@ public class ShowAllEmployees extends HttpServlet {
 				}
 				out.println("</table>");
                 out.println("<h2 align=\"center\"><a href=\"home.html\">Home</a></h2>");
-                out.println("<h2 align=\"center\"><a href=\"searchemployee.html\">Back</a><hr></h2>");
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();

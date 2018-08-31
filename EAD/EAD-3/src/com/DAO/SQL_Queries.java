@@ -6,7 +6,7 @@ public class SQL_Queries {
     }
     
     public static String getEmployeeDetail() {
-        return "SELECT * FROM employee where employee_First_Name=? OR employee_Last_Name=?";
+        return "SELECT * FROM employee where (employee_First_Name = ? OR employee_Last_Name = ?) OR (employee_First_Name = ? AND employee_Last_Name = ?)";
     }
                                                 
     

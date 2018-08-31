@@ -1,6 +1,13 @@
 function validate() {
 	return (validateName() && validateCompany() && validateEmail()
-			&& validatePassword() && matchConfirmPassword() && validateContact());
+			&& validatePassword() && validateAge() && matchConfirmPassword() && validateContact());
+}
+
+function validateAge() {
+	if (document.getElementById("age").value < 0) {
+		document.getElementById("age").setCustomValidity("Enter correct age");
+		age.focus();
+	}
 }
 
 function validateName() {

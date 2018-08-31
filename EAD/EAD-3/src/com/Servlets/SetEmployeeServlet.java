@@ -36,7 +36,7 @@ public class SetEmployeeServlet extends HttpServlet {
             preparedStatement.executeUpdate();
             
             out.print("<h3 align=\"center\">Successfully Updated the employee details...</h3>");
-            out.print("<p align=\"center\"><a href='home.html'>Back</a></p>");
+            out.print("<p align=\"center\"><a href='ShowAllEmployees'>Back</a></p>");
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

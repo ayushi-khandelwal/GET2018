@@ -32,7 +32,12 @@ public class GetEmployeeDetails extends HttpServlet {
 				PreparedStatement preparedStatement = connection.prepareStatement(queryToGetEmployeeDetails);
 				preparedStatement.setString(1, name);
 				preparedStatement.setString(2, name);
-                
+				String[] tokens = name.split(" ");
+				if(tokens != null) {
+                    preparedStatement.setString(3, tokens[0]);
+                    preparedStatement.setString(4, tokens[1]);
+				}
+				
 				ResultSet resultSet = preparedStatement.executeQuery();
 				out.println("<table align=\"center\" border=\"1\">");
 				out.println("<tr>");
@@ -44,7 +49,7 @@ public class GetEmployeeDetails extends HttpServlet {
 						out.println("<tr>");
 						out.println("<td align=\"center\"><strong>"+resultSet.getString("employee_First_Name")+"</strong></td>");
                         out.println("<td align=\"center\"><strong>"+resultSet.getString("employee_Last_Name")+"</strong></td>");
-						
+
 						out.println("<td align=\"center\"><form action='GetEmployeeFullDetails' method='get'>"
 	                               + "<input type='hidden' name='hiddenId' value='" + resultSet.getString("employee_Email")
 	                               + "'/><input type='submit' name='getFullDetails' value='Get Full Details'/></form></td>");
