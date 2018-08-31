@@ -46,19 +46,19 @@ public class GetEmployeeFullDetails extends HttpServlet {
                 out.println("</tr>");
                 if(resultSet.next()) {
                     do {
-                        out.println("<tr>");
+                        out.println("<tr><br><br>");
                         out.println("<td align=\"center\"><strong>"+resultSet.getString("employee_Email")+"</strong></td>");
                         out.println("<td align=\"center\"><strong>"+resultSet.getString("employee_First_Name")+"</strong></td>");
                         out.println("<td align=\"center\"><strong>"+resultSet.getString("employee_Last_Name")+"</strong></td>");
                         out.println("<td align=\"center\"><strong>"+resultSet.getString("employee_age")+"</strong></td>");
-                        out.println("<td align=\"center\"><a href=\"\">Update</a></td>");
                         out.println("</tr>");
                     } while (resultSet.next());
                 } else {
                     out.println("<h2 style=\"color:black;text-align:center;\">No Employee with the name entered !</h2>");
                 }
                 out.println("</table>");
-                out.println("<hr/><h2 align=\"center\"><a href=\"home.html\">Home</a></h2>");
+                out.println("<h2 align=\"center\"><a href=\"home.html\">Home</a></h2>");
+                out.println("<h2 align=\"center\"><a href=\"searchemployee.html\">Back</a><hr></h2>");
                 connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();

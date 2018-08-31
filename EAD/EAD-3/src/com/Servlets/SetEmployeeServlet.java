@@ -20,20 +20,24 @@ public class SetEmployeeServlet extends HttpServlet {
             throws ServletException, IOException {
         Connection connection = JDBCConnection.getDatabaseConnection("MetacubeDB", "root", "pass123");
         response.setContentType("text/html");
+        
+        
         PrintWriter out = response.getWriter();
+        String email = request.getParameter("email");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        String age = request.getParameter("age");
+        int age = Integer.parseInt(request.getParameter("age"));
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_Queries.updateDetail());
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, firstName);
-            preparedStatement.setString(3, lastName);
-            preparedStatement.setString(4, age);
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setInt(3, age);
+            preparedStatement.setString(4, email);
             preparedStatement.executeUpdate();
-            out.print("Successfully Updated the employee details...");
-            out.print("<a href='home.html'>Back</a>");
+            
+            out.print("<h3 align=\"center\">Successfully Updated the employee details...</h3>");
+            out.print("<p align=\"center\"><a href='home.html'>Back</a></p>");
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {

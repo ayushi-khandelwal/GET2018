@@ -19,11 +19,12 @@ public class SQL_Queries {
         return "SELECT employee_Email,employee_First_Name,employee_Last_Name,employee_age FROM employee";
     }
     
-    public static String getEmailId(String email) {
+    public static String getEmailIdToUpdate(String email) {
         return "SELECT * FROM Employee WHERE employee_Email='" + email + "';";
     }
 
     public static String updateDetail() {
         return "UPDATE employee SET employee_First_Name=?, employee_Last_Name=?, Employee_age=? WHERE Employee_email=?;";
     }
+     
 }

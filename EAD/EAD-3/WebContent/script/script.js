@@ -1,65 +1,76 @@
 function validate() {
-	return (validateName() && validateEmail() && validateAge() );
+	return (validateName() && validateCompany() && validateEmail()
+			&& validatePassword() && matchConfirmPassword() && validateContact());
 }
 
 function validateName() {
 	var isValid = true;
 	var letterNumber = /^[a-zA-Z]+$/;
-	if(document.getElementById("firstname").value.length < 2) {
+	if (document.getElementById("firstname").value.length < 2) {
 		isValid = false;
-		document.getElementById("firstname").setCustomValidity ("Enter name with more than 1 Character");
-	}	
-
-	else if(!document.getElementById("firstname").value.match(letterNumber) ) {
-		
-		isValid = false;
-		document.getElementById("firstname").setCustomValidity ("Enter correct first name");
+		document.getElementById("firstname").setCustomValidity(
+				"Enter name with more than 1 Character");
+		firstname.focus();
 	}
 
-	else if(document.getElementById("lastname").value.length < 2) {
+	else if (!document.getElementById("firstname").value.match(letterNumber)) {
+
 		isValid = false;
-		document.getElementById("lastname").setCustomValidity ("Enter name with more than 1 Character");
-	}	
-	
-	else if(!document.getElementById("lastname").value.match(letterNumber)) {
+		document.getElementById("firstname").setCustomValidity(
+				"Enter correct first name");
+		firstname.focus();
+	}
+
+	else if (document.getElementById("lastname").value.length < 2) {
 		isValid = false;
-		document.getElementById("lastname").setCustomValidity ("Enter correct last name");
+		document.getElementById("lastname").setCustomValidity(
+				"Enter name with more than 1 Character");
+		lastname.focus();
+	}
+
+	else if (!document.getElementById("lastname").value.match(letterNumber)) {
+		isValid = false;
+		document.getElementById("lastname").setCustomValidity(
+				"Enter correct last name");
+		lastname.focus();
 	}
 
 	return isValid;
 }
 
+function validateCompany() {
+	if (document.getElementById("Company").value == "null") {
+		document.getElementById("Company").setCustomValidity(
+				"Please select college");
+		Company.focus();
+		return false;
+	}
+	return true;
+}
 
 function validateEmail() {
-	if ( /^\w+([\.-]?\w+)*@[a-zA-Z]+(\.[a-zA-Z]{2,3})+$/.test(document.getElementById("email").value)) {
+	if (/^\w+([\.-]?\w+)*@[a-zA-Z]+(\.[a-zA-Z]{2,3})+$/.test(document
+			.getElementById("email").value)) {
 		return true;
 	}
-	document.getElementById("email").setCustomValidity ("You have entered an invalid email address!");
+	document.getElementById("email").setCustomValidity(
+			"You have entered an invalid email address!");
+	email.focus();
 	return false;
 }
 
-
-
-function validateAge() {
+function validatePassword() {
 	var isValid = true;
-	var rajex = /^[0-9]+$/;
-	var age = document.getElementById("age");
-	if(!rajex.test(age.value)){
-		age.setCustomValidity ("Age should contain only numberic value");
-		isValid= false;
+	var myPassword = document.getElementById("password");
+	if (!/[a-z]/.test(myPassword.value)) {
+		document.getElementById("password").setCustomValidity(
+				"Password should contain atleast one LowerCase Alphabet");
+		myPassword.focus();
+		isValid = false;
+	} else if (!/[A-Z]/.test(myPassword.value)) {
+		document.getElementById("password").setCustomValidity(
+				"Password should contain atleast one UpperCase Alphabet");
+		myPassword.focus();
+		isValid = false;
 	}
-
-	else if(age.value.length >3 || age.value.length<1){
-		age.setCustomValidity ("Enter correct age");
-		isValid= false;
-	}
-	return isValid;
 }
-
-
-
-
-
-
-
-

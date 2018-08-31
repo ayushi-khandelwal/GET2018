@@ -20,12 +20,12 @@ public class UpdateEmployeeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Connection connectionToDB = JDBCConnection.getDatabaseConnection("MetacubeDB", "root", "pass123");
+        Connection connection = JDBCConnection.getDatabaseConnection("MetacubeDB", "root", "pass123");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         String email = request.getParameter("hiddenId");
         try {
-            PreparedStatement preparedStatement = connectionToDB.prepareStatement(SQL_Queries.getEmailId(email));
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_Queries.getEmailIdToUpdate(email));
             out.print("<form action = 'SetEmployee' method='get'><table width=50% border=1 align=\"center\">");
             ResultSet resultSet = preparedStatement.executeQuery();
             out.println("<table align=\"center\" border=\"1\">");
@@ -43,18 +43,18 @@ public class UpdateEmployeeServlet extends HttpServlet {
                 out.println("<td><input type='text' name='firstName' value='"+ resultSet.getString("employee_First_Name") + "'/></td>");
                 out.println("<td><input type='text' name='lastName' value='"+ resultSet.getString("employee_Last_Name") + "'/></td>");
                 out.println("<td><input type='number' name='age' value='" + resultSet.getString("employee_age") + "'/></td>");
-                out.println("<tr><td><input type='submit' value='submit'/></td></tr>");
+                out.println("<tr><br><td colspan=\"4\" align=\"center\"><input type='submit' value='submit'/></td></tr>");
                 out.println("</tr>");
             }
             
             out.print("</table></form>");
-            out.println("<p align=\"center\"><a href='home.html'>Back</a></p>");
+            out.println("<h2 align=\"center\"><a href=\"home.html\">Back</a><hr></h2>");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
             out.close();
             try {
-                connectionToDB.close();
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
