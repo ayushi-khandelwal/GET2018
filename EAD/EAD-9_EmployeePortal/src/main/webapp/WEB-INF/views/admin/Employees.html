@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<htmlxmlns:th="http://www.thymeleaf.org">
+	<head>
+<meta charset="ISO-8859-1">
+<title>Employees</title>
+	</head>
+	<body>
+		<div th:if="${not #lists.isEmpty(employeess)}">
+			<h2>All employees</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+					<th>Date Of Birth</th>
+					<th>Gender</th>
+					<th>Email</th>
+				</tr>
+				<tr th:each="employee : ${employees}">
+					<td th:text="${employee.id}">Id</td>
+					<td th:text="${employee.firstName}">First Name</td>
+					<td th:text="${employee.middleName}">Middle Name</td>
+					<td th:text="${employee.lastName}">Last Name</td>
+					<td th:text="${employee.dateOfBirth}">Date Of Birth</td>
+					<td th:text="${employee.gender}">Gender</td>
+					<td th:text="${employee.email}">Email</td>
+				</tr>
+			</table>
+		</div>
+
+		<hr />
+
+		<a th:href="admin/dashboard">Goto dashboard</a>
+	</body>
+	</html>

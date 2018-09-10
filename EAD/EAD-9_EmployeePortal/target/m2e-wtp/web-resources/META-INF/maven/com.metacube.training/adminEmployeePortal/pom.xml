@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.metacube.training</groupId>
-	<artifactId>EAD-9_EmployeePortal</artifactId>
+	<artifactId>adminEmployeePortal</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>EAD-9_EmployeePortal</name>
+	<name>adminEmployeePortal</name>
 
 	<properties>
 		<springframework.version>5.0.2.RELEASE</springframework.version>
@@ -98,12 +98,12 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>EAD-9_EmployeePortal</warName>
+						<warName>adminEmployeePortal</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<finalName>EAD-9_EmployeePortal</finalName>
+		<finalName>adminEmployeePortal</finalName>
 	</build>
 </project>
