@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Dashboard</title>
+</head>
+<body>
+	<h3>Projects</h3>
+	<a th:href="@{addProject}">Add Project</a>
+	
+	<a th:href="@{showAllProjects}">Show All Projects</a>
+	
+	
+	<h3>Jobs</h3>
+	<a th:href="@{addJob}">Add Job</a>
+	
+	<a th:href="@{showAllJobs}">Show All Jobs</a>
+	
+	
+	<h3>Skills</h3>
+	<a th:href="@{addSkill}">Add Skill</a>
+	
+	<a th:href="@{showAllSkills}">Show All Skills</a>
+	
+	
+	<h3>Employee</h3>
+	<a th:href="@{addEmployee}">Add Employee</a>
+	
+	<a th:href="@{showAllEmployees}">Show All Employees</a>
+	
+	
+	<hr/>
+	<a th:href="@{logout}">Logout</a>
+</body>
+</html>
