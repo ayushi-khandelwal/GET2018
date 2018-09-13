@@ -2,63 +2,39 @@ package com.metacube.training.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "project")
+@Table(name = "project_master")
 public class Project {
 	
-	@Override
-	public String toString() {
-		return "Project [id=" + id + ", name=" + name + ", description="
-				+ description + ", startDate=" + startDate + ", endDate="
-				+ endDate + "]";
-	}
-
 	@Id
-	@Column(name = "id")
+	@Column(name="project_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	public int project_id;
 	
-	@Column(name = "name")
-	private String name;
+	@Column(name="description")
+	public String description;
 	
-	@Column(name = "description")
-	private String description;
-	
-	@Column(name = "start_date")
+	@Column(name="start_date")
 	@DateTimeFormat(pattern= "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
-	private Date startDate;
+	public Date startDate;
 	
-	@Column(name = "end_date")
+	@Column(name="end_date")
 	@DateTimeFormat(pattern= "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
-	private Date endDate;
+	public Date endDate;
+	
 
-	public Long getId() {
-		return id;
+	public int getProject_id() {
+		return project_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setProject_id(int project_id) {
+		this.project_id = project_id;
 	}
 
 	public String getDescription() {

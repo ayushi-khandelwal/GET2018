@@ -8,14 +8,14 @@ import com.metacube.training.model.Project;
 public interface ProjectService {
 
 	
-	Project getProjectById(Long id);
+	public Project getProjectById(int id);
 
-	List<Project> getAllProjects();
+	public List<Project> getAllProjects();
 
-	boolean deleteProject(Long id);
+	public boolean deleteProject(int id);
 
-	boolean updateProject(Project project);
+	public boolean updateProject(Project project);
 
-	boolean createProject(Project project);
+	public boolean createProject(Project project);
 
 }

@@ -16,7 +16,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	
 	@Override
-	public Project getProjectById(Long id) {
+	public Project getProjectById(int id) {
 		
 		return projectDAO.getProjectById(id);
 	}
@@ -27,7 +27,7 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public boolean deleteProject(Long id) {
+	public boolean deleteProject(int id) {
 		Project project = projectDAO.getProjectById(id);
 		return projectDAO.deleteProject(project);
 	}
@@ -40,10 +40,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public boolean createProject(Project project) {
 		
-		projectDAO.createProject(project);
-		
-		return true;
+		return projectDAO.createProject(project);
 	}
 
-	
 }

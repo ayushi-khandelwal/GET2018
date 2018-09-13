@@ -3,59 +3,69 @@ package com.metacube.training.dao;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
+import javax.sql.DataSource;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.metacube.training.mappers.ProjectMapper;
 import com.metacube.training.model.Project;
+import com.metacube.training.model.Skill;
 
 @Repository
 @Transactional
 public class ProjectDAOImpl implements ProjectDAO {
-
-	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
-	   private SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 	
-	/*@Autowired
-	public ProjectDAOImpl(DataSource dataSource) {
-		jdbcTemplate = new JdbcTemplate(dataSource);
-	}*/
-
-	private final String SQL_FIND_PROJECT = "select * from project where id = ?";
-	private final String SQL_DELETE_PROJECT = "delete from project where id = ?";
-	private final String SQL_UPDATE_PROJECT = "update project set name = ?, description = ?, start_date  = ?, end_date  = ? where id = ?";
-	private final String SQL_GET_ALL = "* from project";
-	private final String SQL_INSERT_PROJECT = "insert into project(name, description, start_date, end_date) values(?,?,?,?)";
-
-	public Project getProjectById(Long id) {
-		return jdbcTemplate.queryForObject(SQL_FIND_PROJECT, new Object[] { id }, new ProjectMapper());
+	public Project getProjectById(int id) {
+		Criteria crit = sessionFactory.openSession().createCriteria(Project.class);
+		crit.add(Restrictions.eq("project_id", id));
+		return (Project) crit.uniqueResult();
 	}
 
 	public List<Project> getAllProjects() {
-		//return jdbcTemplate.query(SQL_GET_ALL, new ProjectMapper());
-		TypedQuery<Project> query = sessionFactory.getCurrentSession().createQuery("from Project");
-		return query.getResultList();
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(Project.class);
+		return crit.list();
 	}
 
-	public boolean deleteProject(Project person) {
-		return jdbcTemplate.update(SQL_DELETE_PROJECT, person.getId()) > 0;
+	public boolean deleteProject(Project project) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		String hql = "DELETE FROM project_master WHERE project_id = :project_id";
+		int result = session.createQuery(hql)
+				.setParameter("id", project.getProject_id())
+				.executeUpdate();
+		tx.commit();
+		session.close();
+		return result > 0;
 	}
 
-	public boolean updateProject(Project person) {
-		return jdbcTemplate.update(SQL_UPDATE_PROJECT, person.getName(), person.getDescription(), person.getStartDate(),
-				person.getEndDate()) > 0;
+	public boolean updateProject(Project project) {
+		String hql = "UPDATE project_master SET description = :description, start_date  = :startDate,"
+				+ " end_date  = :endDate WHERE project_id = :project_id";
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		int result = session.createQuery(hql)
+				.setParameter("description", project.getDescription())
+				.setParameter("startDate", project.getStartDate())
+				.setParameter("endDate", project.getEndDate())
+				.setParameter("project_id", project.getProject_id())
+				.executeUpdate();
+		tx.commit();
+		session.close();
+		return result > 0;
 	}
 
-	public void createProject(Project person) {
-		/*return jdbcTemplate.update(SQL_INSERT_PROJECT, person.getName(), person.getDescription(), person.getStartDate(),
-				person.getEndDate()) > 0;*/
-		sessionFactory.getCurrentSession().save(person);
+	public boolean createProject(Project project) {
+		return sessionFactory.getCurrentSession().save(project) != null;
 	}
 
 }

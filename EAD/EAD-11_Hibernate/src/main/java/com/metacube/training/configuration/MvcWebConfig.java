@@ -22,17 +22,20 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
+import com.metacube.training.model.Employee;
+import com.metacube.training.model.Job;
 import com.metacube.training.model.Project;
+import com.metacube.training.model.Skill;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.metacube.training")
 @EnableTransactionManagement
 @PropertySource("classpath:database.properties")
-public class MvcWebConfig implements WebMvcConfigurer {
+public class MvcWebConfig implements WebMvcConfigurer{
 
 	@Autowired
-	Environment env;
+	Environment environment;
 
 	private final String URL = "url";
 	private final String USER = "dbuser";
@@ -43,7 +46,7 @@ public class MvcWebConfig implements WebMvcConfigurer {
 	private ApplicationContext applicationContext;
 
 	/*
-	 * STEP 1 - Create SpringResourceTemplateResolver
+	 * Create SpringResourceTemplateResolver
 	 */
 	@Bean
 	public SpringResourceTemplateResolver templateResolver() {
@@ -56,7 +59,7 @@ public class MvcWebConfig implements WebMvcConfigurer {
 	}
 
 	/*
-	 * STEP 2 - Create SpringTemplateEngine
+	 * Create SpringTemplateEngine
 	 */
 	@Bean
 	public SpringTemplateEngine templateEngine() {
@@ -67,7 +70,7 @@ public class MvcWebConfig implements WebMvcConfigurer {
 	}
 
 	/*
-	 * STEP 3 - Register ThymeleafViewResolver
+	 * Register ThymeleafViewResolver
 	 */
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -76,40 +79,37 @@ public class MvcWebConfig implements WebMvcConfigurer {
 		registry.viewResolver(resolver);
 	}
 	
-	
 	@Bean
-	  public LocalSessionFactoryBean getSessionFactory() {
+	public LocalSessionFactoryBean getSessionFactory() {
 	    LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 	    factoryBean.setDataSource(dataSource());
 	    
 	    Properties props = new Properties();
 	    
 	    // Setting Hibernate properties
-	    props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-	    props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+	    props.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+	    props.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
 
 	    factoryBean.setHibernateProperties(props);
-	    factoryBean.setAnnotatedClasses(Project.class);
+	    factoryBean.setAnnotatedClasses(Project.class, Employee.class, Job.class, Skill.class);
 	    
 	    return factoryBean;
 	  }
 
-	  @Bean
-	  public HibernateTransactionManager getTransactionManager() {
+	@Bean
+	public HibernateTransactionManager getTransactionManager() {
 	    HibernateTransactionManager transactionManager = new HibernateTransactionManager();
 	    transactionManager.setSessionFactory(getSessionFactory().getObject());
 	    return transactionManager;
 	  }
 
-
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-		driverManagerDataSource.setUrl(env.getProperty(URL));
-		driverManagerDataSource.setUsername(env.getProperty(USER));
-		driverManagerDataSource.setPassword(env.getProperty(PASSWORD));
-		driverManagerDataSource.setDriverClassName(env.getProperty(DRIVER));
+		driverManagerDataSource.setUrl(environment.getProperty(URL));
+		driverManagerDataSource.setUsername(environment.getProperty(USER));
+		driverManagerDataSource.setPassword(environment.getProperty(PASSWORD));
+		driverManagerDataSource.setDriverClassName(environment.getProperty(DRIVER));
 		return driverManagerDataSource;
 	}
-
 }
