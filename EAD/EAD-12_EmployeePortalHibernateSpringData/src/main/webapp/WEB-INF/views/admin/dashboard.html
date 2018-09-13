@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Dashboard</title>
+</head>
+<body>
+	<h3>Projects</h3>
+	<a th:href="@{addProject}">Add Project | </a>
+	<a th:href="@{showAllProjects}">Show All Projects</a>
+	<form name="updateProject" method="get" th:action="@{updateProject}">
+		Project Id: <input type="number" name="id" placeholder="Project Id" />
+		<input type="submit" value="update" />
+	</form>
+	<form name="deleteProject" method="post" th:action="@{deleteProject}">
+		Project Id: <input type="number" name="id" placeholder="Project Id" />
+		<input type="submit" value="delete" />
+	</form>
+
+	<h3>Jobs</h3>
+	<a th:href="@{addJob}">Add Job | </a>
+	<a th:href="@{showAllJobs}">Show All Jobs</a>
+	<form name="updateJob" method="get" th:action="@{updateJob}">
+		Job Id: <input type="number" name="id" placeholder="Job Id" /> <input
+			type="submit" value="update" />
+	</form>
+	<form name="deleteJob" method="post" th:action="@{deleteJob}">
+		Job Id: <input type="number" name="id" placeholder="Job Id" /> <input
+			type="submit" value="delete" />
+	</form>
+
+	<h3>Skills</h3>
+	<a th:href="@{addSkill}">Add Skill | </a>
+	<a th:href="@{showAllSkills}">Show All Skills</a>
+	<form name="updateSkill" method="get" th:action="@{updateSkill}">
+		Skill Id: <input type="number" name="id" placeholder="Skill Id" /> <input
+			type="submit" value="update" />
+	</form>
+	<form name="deleteSkill" method="post" th:action="@{deleteSkill}">
+		Skill Id: <input type="number" name="id" placeholder="Skill Id" /> <input
+			type="submit" value="delete" />
+	</form>
+
+	<h3>Employee</h3>
+	<a th:href="@{addEmployee}">Add Employee | </a>
+	<a th:href="@{showAllEmployees}">Show All Employees</a>
+	<form name="updateEmployee" method="get" th:action="@{updateEmployee}">
+		Employee Id: <input type="number" name="id" placeholder="Employee Id" />
+		<input type="submit" value="update" />
+	</form>
+	<form name="deleteEmployee" method="post" th:action="@{deleteEmployee}">
+		Employee Id: <input type="number" name="id" placeholder="Employee Id" />
+		<input type="submit" value="delete" />
+	</form>
+
+	<hr />
+	<a th:href="@{logout}">Logout</a>
+</body>
+</html>
