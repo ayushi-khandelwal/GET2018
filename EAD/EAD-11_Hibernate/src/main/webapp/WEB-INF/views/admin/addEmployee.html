@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Employee</title>
+</head>
+<body>
+	<form name="addEmployeeForm" method="post" th:object="${employee}"
+		th:action="@{addEmployee}">
+		<table>
+			<tr>
+				<td><input type="hidden" th:field="*{empCode}" th:value="*{empCode}" />
+				</td>
+			</tr>
+			<tr>
+				<td>First Name:</td>
+				<td><input type="text" th:field="*{firstName}"
+					th:value="*{firstName}" id="firstName" name="firstName" /></td>
+			</tr>
+			<tr>
+				<td>Middle Name:</td>
+				<td><input type="text" th:field="*{middleName}"
+					th:value="*{middleName}" id="middleName" name="middleName" /></td>
+			</tr>
+			<tr>
+				<td>Last Name:</td>
+				<td><input type="text" th:field="*{lastName}"
+					th:value="*{lastName}" id="lastName" name="lastName" /></td>
+			</tr>
+			<tr>
+				<td>Date Of Birth:</td>
+				<td><input type="Date" th:field="*{dateOfBirth}"
+					th:value="*{dateOfBirth}" id="dateOfBirth" name="dateOfBirth" /></td>
+			</tr>
+			<tr>
+				<td>Gender:</td>
+				<td><input type="text" th:field="*{gender}"
+					th:value="*{gender}" id="gender" name="gender" /></td>
+				<!-- <td><input type="radio" th:field="*{gender}" id="gender" name="gender" value="male" />Male</td>
+				<td><input type="radio" th:field="*{gender}" id="gender" name="gender"
+					value="female" />Female</td> -->
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="email" th:field="*{email}" th:value="*{email}"
+					id="email" name="email" /></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" th:field="*{password}"
+					th:value="*{password}" id="password" name="password" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="submit" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
