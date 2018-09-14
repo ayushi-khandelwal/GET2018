@@ -29,7 +29,7 @@ public class Project {
 	public Date endDate;
 	
 
-	public long getProject_id() {
+	public Long getProject_id() {
 		return project_id;
 	}
 

@@ -45,7 +45,7 @@ public class AdminController {
 	    if (!employeeService.isCredentialsValid(email, password)) {
             return new ModelAndView("login", "message", "Wrong credentials!"); 
         }
-        return new ModelAndView("admin/dashboard", "message", ""); 
+        return new ModelAndView("admin/dashboard", "message", "Welcome"); 
 	}
 
 
@@ -57,13 +57,17 @@ public class AdminController {
 	}
 
 	@RequestMapping(path = "addProject", method = RequestMethod.POST)
-	public String saveproject(@ModelAttribute("project") Project project) {
-		if(project!= null) {
+	public ModelAndView addProject(@ModelAttribute("project") Project project) {
+	    if(project.getDescription().equals("") || project.getEndDate().equals("") || 
+	            project.getStartDate().equals("")) {
+            return new ModelAndView("admin/addProject", "message", "Project details cannot be empty!");
+        }
+	    else if(project!= null) {
 			projectService.createProject(project);	
-		}else {
+		}else 
 			projectService.updateProject(project);
-		}
-		return "redirect:/admin/showAllProjects";
+		
+		return new ModelAndView("redirect:/admin/showAllProjects","message", "Project added successfully!");
 	}
 
 	@RequestMapping(path = "/showAllProjects", method = RequestMethod.GET)
@@ -73,9 +77,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/updateProject", method = RequestMethod.GET)
-    public String updateProject(@RequestParam(value = "project_id") long projectId,
-            Model model)
-    {
+    public String updateProject(@RequestParam(value = "project_id") long projectId, Model model) {
         Project project = projectService.getProjectById(projectId);
         model.addAttribute("project", project);
         return "admin/addProject";
@@ -83,8 +85,10 @@ public class AdminController {
 
 	@RequestMapping(path = "/deleteProject", method = RequestMethod.POST)
 	public String deleteproject(@RequestParam("project_id") long project_id) {
-		projectService.deleteProject(project_id);
-		return "redirect:/admin/projects";
+		if(projectService.deleteProject(project_id))
+		    return "redirect:/admin/projects";
+		else
+		    return "error";
 	}
 
 
@@ -108,14 +112,19 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-    public String addEmployee(@ModelAttribute("employee") Employee employee)
+    public ModelAndView addEmployee(@ModelAttribute("employee") Employee employee)
     {
-        if (employee.getEmpCode() == 0 && employee != null) {
+        if(employee.getEmail().equals("") || employee.getDateOfBirth().equals("") ||
+                employee.getFirstName().equals("") || employee.getGender().equals("") ||
+                employee.getLastName().equals("") || employee.getPassword().equals("")) {
+            return new ModelAndView("admin/addEmployee", "message", "Employee email cannot be empty!");
+        }
+        if (employee.getEmpCode() == 0) {
             employeeService.createEmployee(employee);
         } else {
             employeeService.updateEmployee(employee);
         }
-        return "redirect:/admin/showAllEmployees";
+        return new ModelAndView("redirect:/admin/showAllEmployees", "message", "Employee Added successfully");
     }
 
     /**
@@ -127,8 +136,10 @@ public class AdminController {
     @RequestMapping(value = "/deleteEmployee", method = RequestMethod.POST)
     public String deleteEmployee(@RequestParam(value = "empCode") long empCode)
     {
-        employeeService.deleteEmployee(empCode);
-        return "redirect:/admin/showAllEmployees";
+        if(employeeService.deleteEmployee(empCode))
+            return "redirect:/admin/showAllEmployees";
+        else
+            return "error";
     }
 
     /**
@@ -179,14 +190,18 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/addJob", method = RequestMethod.POST)
-    public String addJob(@ModelAttribute("job") Job job)
+    public ModelAndView addJob(@ModelAttribute("job") Job job)
     {
-        if (job.getJobCode() == 0 && job != null) {
+        if(job.getJobTitle().equals("")) {
+            return new ModelAndView("admin/addJob", "message", "Job title cannot be empty!");
+        }
+        if (job.getJobCode() == 0) {
             jobService.createJobTitle(job);
         } else {
             jobService.updateJobTitle(job);
         }
-        return "redirect:/admin/showAllJobs";
+        
+        return new ModelAndView("admin/showAllJobs", "message", "");
     }
 
     /**
@@ -198,8 +213,10 @@ public class AdminController {
     @RequestMapping(value = "/deleteJob", method = RequestMethod.POST)
     public String deleteJob(@RequestParam(value = "jobCode") long jobCode)
     {
-        jobService.deleteJobTitle(jobCode);
-        return "redirect:/admin/showAllJobs";
+        if(jobService.deleteJobTitle(jobCode))
+            return "redirect:/admin/showAllJobs";
+        else
+            return "error";
     }
 
     /**
@@ -254,8 +271,11 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/addSkill", method = RequestMethod.POST)
-    public String addSkill(@ModelAttribute("skill") Skill skill)
+    public ModelAndView addSkill(@ModelAttribute("skill") Skill skill)
     {
+        if(skill.getSkillName().equals("")) {
+            return new ModelAndView("admin/addSkill", "message", "Skill details cannot be empty!");
+        }
         if (skill.getSkillId() == 0 && skill != null)
         {
             skillService.createSkill(skill);
@@ -263,7 +283,7 @@ public class AdminController {
         {
             skillService.updateSkill(skill);
         }
-        return "redirect:/admin/showAllSkills";
+        return new ModelAndView("admin/showAllSkills", "message", "Skill added!");
     }
 
     /**
@@ -275,8 +295,10 @@ public class AdminController {
     @RequestMapping(value = "/deleteSkill", method = RequestMethod.POST)
     public String deleteSkill(@RequestParam(value = "skillId") long skillId)
     {
-        skillService.deleteSkill(skillId);
-        return "redirect:/admin/showAllSkills";
+        if(skillService.deleteSkill(skillId))
+            return "redirect:/admin/showAllSkills";
+        else
+            return "error";
     }
 
     /**
@@ -339,20 +361,6 @@ public class AdminController {
     @RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)
     public String forgotPassword() {
         return "forgotPassword";
-    }
-
-    /**
-     * Sets default password and sends it to the email address
-     * 
-     * @param email
-     * @return
-     */
-    @RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
-    public ModelAndView forgotPassword(@RequestParam(value = "email") String email, ModelAndView modelAndView) {
-        
-            modelAndView.addObject("Can't do");
-
-        return modelAndView;
     }
 }
 
