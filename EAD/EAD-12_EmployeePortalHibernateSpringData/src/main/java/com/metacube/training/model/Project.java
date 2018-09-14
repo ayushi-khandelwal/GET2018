@@ -13,7 +13,7 @@ public class Project {
 	@Id
 	@Column(name="project_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long project_id;
+	public Long project_id;
 	
 	@Column(name="description")
 	public String description;
@@ -33,7 +33,7 @@ public class Project {
 		return project_id;
 	}
 
-	public void setProject_id(long project_id) {
+	public void setProject_id(Long project_id) {
 		this.project_id = project_id;
 	}
 

@@ -3,19 +3,21 @@ package com.metacube.training.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.metacube.training.model.Employee;
 import com.metacube.training.repository.EmployeeRepository;
 
 
-@Service
+@Service("ClientService")
 public class EmployeeServiceImpl implements EmployeeService{
 	
 	/*@Autowired
 	private EmployeeDAO employeeDAO;*/
 
     @Autowired
+    @Qualifier("employeeRepository")
     private EmployeeRepository<Employee> employeeRepository;
 
     @Override
@@ -53,17 +55,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public boolean createEmployee(Employee employee) {
 		return employeeRepository.save(employee) != null;
 	}
-
-    @Override
-    public long getIdByEmail(String email) {
-        return employeeRepository.findOne(email).getEmpCode();
-    }
     
-    @Override
     public boolean isCredentialsValid(String email, String password) {
-        employeeRepository.exists(getIdByEmail(email));
+        /*employeeRepository.exists(getIdByEmail(email));*/
+        for(Employee employee : employeeRepository.findAll()) {
+            if(employee.getEmail().equals(email) && employee.getPassword().equals(password))
+                return true;
+        }
         return false;
     }
-
 
 }

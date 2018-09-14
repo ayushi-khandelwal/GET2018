@@ -16,7 +16,5 @@ public interface EmployeeService {
 	
 	boolean createEmployee(Employee employee);
 
-    long getIdByEmail(String email);
-
     boolean isCredentialsValid(String email, String password);
 }

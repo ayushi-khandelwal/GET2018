@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.metacube.training.model.Employee;
 import com.metacube.training.service.EmployeeService;
 
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
+    
     @Autowired
     private EmployeeService employeeService;
 
@@ -36,12 +36,13 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam(value = "email") String email,
+    public ModelAndView login(@RequestParam(value = "email") String email,
             @RequestParam(value = "password") String password) {
         if (!employeeService.isCredentialsValid(email, password)) {
-            return "redirect:/";
+            return new ModelAndView("login", "message", "Wrong credentials!"); 
         }
-        return "redirect:/employee/dashboard";
+        return new ModelAndView("employee/dashboard", "message", ""); 
+        /*return "redirect:/employee/dashboard";*/
     }
 
     /**
@@ -53,11 +54,11 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping(value = "/searchEmployee", method = RequestMethod.POST)
-    public String searchEmployee(@RequestParam(value = "id") long id, Model model) {
-        if(model.addAttribute("employees", employeeService.getEmployeeById(id)) != null)
+    public String searchEmployee(@RequestParam(value = "empCode") long empCode, Model model) {
+        if(model.addAttribute("employees", employeeService.getEmployeeById(empCode)) != null)
             return "employee/searchEmployee";
         else
-            return "redirect:/";
+            return "error";
     }
 
     /**

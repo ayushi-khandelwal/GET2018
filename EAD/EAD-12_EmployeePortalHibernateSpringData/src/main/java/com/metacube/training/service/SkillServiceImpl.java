@@ -5,64 +5,52 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.metacube.training.model.Project;
 import com.metacube.training.model.Skill;
+import com.metacube.training.repository.ProjectRepository;
+import com.metacube.training.repository.SkillRepository;
 
 @Service
 public class SkillServiceImpl implements SkillService{
-	/*
-	@Autowired
-	private SkillDAO skillDAO;
+
+    @Autowired
+    private SkillRepository<Skill> skillRepository;
 
 	public Skill getSkillById(Long id) {
-		return skillDAO.getSkillById(id);
+	    if(skillRepository.exists(id)) {
+            return skillRepository.findOne(id);
+        }
+        return null;
+		/*return skillDAO.getSkillById(id);*/
 	}
 
 	public List<Skill> getAllSkills() {
-		return skillDAO.getAllSkills();
+	    return skillRepository.findAll();
+	    /*return skillDAO.getAllSkills();*/
 	}
 
 	public boolean deleteSkill(Long id) {
-		Skill skill = skillDAO.getSkillById(id);
-		return skillDAO.deleteSkill(skill);
+	    if(skillRepository.exists(id)) {
+	        skillRepository.delete(id);
+            return true;
+        }
+	    return false;
+	    /*Skill skill = skillDAO.getSkillById(id);
+		return skillDAO.deleteSkill(skill);*/
 	}
 
 	public boolean updateSkill(Skill skill) {
-		return skillDAO.updateSkill(skill);
+	    return (skillRepository.saveAndFlush(skill) != null);
+	    /*return skillDAO.updateSkill(skill);*/
 	}
 
 	public boolean createSkill(Skill skill) {
-		return skillDAO.createSkill(skill);
+	    if(skill != null) {
+	        skillRepository.save(skill);
+	        return true;
+	    }
+	    return false;
+	    /*return skillDAO.createSkill(skill);*/
 	}
-*/
-    @Override
-    public Skill getSkillById(Long id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
-    @Override
-    public List<Skill> getAllSkills() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public boolean deleteSkill(Long id) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean updateSkill(Skill skill) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean createSkill(Skill skill) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-	
-	
 }

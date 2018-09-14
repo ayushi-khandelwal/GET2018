@@ -59,5 +59,4 @@ public class JobServiceImpl implements JobService{
 		/*return jobTitleDAO.createJobTitle(jobTitle);*/
 	}
 
-
 }

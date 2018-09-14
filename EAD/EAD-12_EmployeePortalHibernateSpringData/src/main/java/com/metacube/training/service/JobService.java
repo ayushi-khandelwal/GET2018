@@ -15,4 +15,5 @@ public interface JobService {
 	boolean updateJobTitle(Job jobTitle);
 	
 	boolean createJobTitle(Job jobTitle);
+	
 }
