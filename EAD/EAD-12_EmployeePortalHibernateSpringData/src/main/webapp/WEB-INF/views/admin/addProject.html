@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Project</title>
+</head>
+<body>
+	<form name="addProjectForm" method="post" th:object="${project}"
+		th:action="@{addProject}">
+		<table>
+			<tr>
+				<td><input type="hidden" th:field="*{project_id}" th:value="*{project_id}" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Project Description:</td>
+				<td><input type="text" th:field="*{description}"
+					th:value="*{description}" /></td>
+			</tr>
+
+			<tr>
+				<td>Project Start Date:</td>
+				<td><input type="date" th:field="*{startDate}"
+					th:value="*{startDate}" /></td>
+			</tr>
+
+			<tr>
+				<td>Project End Date:</td>
+				<td><input type="date" th:field="*{endDate}"
+					th:value="*{endDate}" /></td>
+			</tr>
+
+			<tr>
+				<td><input type="submit" value="submit" /></td>
+			</tr>
+			<tr><td></td>
+				<td th:text="${message}">Id</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
