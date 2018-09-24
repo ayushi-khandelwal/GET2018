@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th = "www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>edit Skills</title>
+</head>
+<body>
+	<div align="center">
+		<form th:object="${skillMaster}" th:action="@{../skills}" method="post">
+			<input type="hidden" th:field="*{skillId}" />
+			<label>Skill: </label>
+			<input type="text" th:field="*{skillName}" /><br/>
+			<input type="submit" value="Save"/>
+		</form>
+	</div>
+</body>
+</html>

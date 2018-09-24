@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Job Details</title>
+
+</head>
+<body>
+	<div>
+		<form th:object="${jobDetails}" th:action="@{./updateJobDetails}" method="post">
+			<label>Employee Code:</label>
+			<input type="text"  th:field="*{employeeCode}" readonly="readonly"/>
+			<br>
+			<label>jobCode:</label> 
+			<input type="text"  value="" th:field="*{jobCode}" /> <br>
+			<label>Reporting Manager:</label> 
+			<input type="text"  value="" th:field="*{reportingManager}" /> <br>
+			<label>Team Lead:</label> 
+			<input type="text" value="" th:field="*{teamLead}" /> <br>
+			<label>Current Project:</label> 
+			<input type="text"  value="" th:field="*{currentProjectId}" /> 
+			<br>
+			<button type="submit" class="btn btn-primary">Save</button>
+		</form>
+	</div>
+</body>
+</html>

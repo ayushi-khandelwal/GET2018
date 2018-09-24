@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+</head>
+<body>
+	<div class="container">
+    <div th:if="${not #lists.isEmpty(employee)}">
+        <h2>All Employee</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Emp Id</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Email Id</th>
+                <th>Password</th>
+                <th>Update Job Details</th>
+            </tr>
+            <tr th:each="employee : ${employee}">
+                <td align="center" th:text="${employee.employeeCode}">Emp Id</td>
+                <td align="center" th:text="${employee.firstName}">First Name</td>
+                <td align="center" th:text="${employee.middleName}">Middle Name</td>
+                <td align="center" th:text="${employee.lastName}">Last Name</td>
+                <td align="center" th:text="${employee.dob}">Date Of Birth</td>
+                <td align="center" th:text="${employee.gender}">Gender</td>
+                <td align="center" th:text="${employee.emailId}">Email Id</td>
+                <td align="center" th:text="${employee.password}">Password</td>
+                <td align="center"><a th:href="@{'../admin/updateJobDetails?employeeCode=' +${employee.employeeCode}}">Update</a></td>
+            </tr> 	
+        </table>
+    </div>
+    <div>
+    	<a th:href="@{../admin/employee/add}">Add new Employee</a><br/>
+    </div>
+</div>
+</body>
+</html>

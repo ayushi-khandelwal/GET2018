@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th = "www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Skills</title>
+</head>
+<body>
+	<div align="center">
+		<div th:if="${not #lists.isEmpty(skillMaster)}">
+			<table>
+				<tr>
+					<th>Id</th>
+					<th>Skill</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+				<tr th:each = "skill : ${skillMaster}">
+					<td th:text="${skill.skillId}">Id</td>
+					<td th:text="${skill.skillName}">Skill</td>
+					<td><a th:href="@{'../admin/skills/edit?skillId='+${skill.skillId}}">Edit</a></td>
+					<td><a th:href="@{'../admin/skills/delete?skillId='+${skill.skillId}}">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div align="center">
+		<a th:href="@{../admin/skills/add}">Add a Skill </a><br/>
+	</div>
+</body>
+</html>

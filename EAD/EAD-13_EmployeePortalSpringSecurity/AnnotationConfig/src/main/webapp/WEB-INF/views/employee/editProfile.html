@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Change Password</title>
+</head>
+<body>
+	<div align="center">
+		<h2>Edit Profile</h2>
+		<form th:action="@{/employee/editProfile}" method="post">
+			<table>
+			<tr><td><input type="hidden" name="" th:field="${employee.firstName}"/></td></tr>
+			<tr><td><input type="hidden" name="" th:field="${employee.lastName}"/></td></tr>
+			<tr><td><input type="hidden" name="" th:field="${employee.gender}"/></td></tr>
+			<tr><td><input type="hidden" name="" th:field="${employee.primaryContactNumber}"/></td></tr>
+			<tr><td><input type="hidden" name="" th:field="${employee.profilePicture}"/></td></tr>
+			<tr><td><input type="hidden" name="" th:field="${employee.password}"/></td></tr>
+			<tr>
+				<td>Employee Id</td>
+				<td><input type="text" name="employeeId" th:field="${employee.employeeCode}" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<td>Email Id</td>
+				<td><input type="email" name="emailId" th:field="${employee.emailId}"></td>
+			</tr>
+			<tr>
+				<td>Skype Id</td>
+				<td><input type="text" name="skypeId" th:field="${employee.skypeId}"></td>
+			</tr>
+			<tr>
+				<td>Secondary Contact</td>
+				<td><input type="text" name="secondaryContact" th:field="${employee.secondaryContactNumber}"></td>
+			</tr>
+			<tr>
+				<td>Date Of Birth</td>
+				<td><input type="text" name="dob" th:field="${employee.dob}"></td>
+			</tr>
+			</table>
+			<input type="submit" value="SAVE">
+		</form>
+	</div>
+</body>
+</html>
