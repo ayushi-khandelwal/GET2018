@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head lang="en">
+	<style>
+		.container {
+			margin: 5% auto;
+			width: 25%;
+			padding: 5%;
+			box-shadow: 5px 5px 5px grey;
+			border-radius: 12px;
+			background-color: lightgrey;
+		}
+		
+		.container * {
+			margin: 3%;
+		}
+		
+		form {
+			background-color: white;
+			padding: 5%;
+			margin: 3% 0%;
+		}
+	</style>
+	<title>Edit project Details</title>
+
+	</head>
+	<body>
+		<div align="center" class="container">
+			<form th:object="${project}" th:action="@{../projects}" method="post">
+				<input type="hidden"  th:field="*{id}" />
+				<br>
+				<label>Description:</label> 
+				<input type="text"  th:field="*{description}" required="required" /> <br>
+				<label>Start Date:</label> 
+				<input type="date"  th:field="*{startDate}" required="required" /> <br>
+				<label>End Date:</label> 
+				<input type="date" th:field="*{endDate}" required="required" /> <br>
+				<button type="submit" class="btn btn-primary">Save</button>
+	
+			</form>
+		</div>
+		
+		<hr />
+		<p align="center"><a th:href="@{../projects}">Show all projects</a></p>
+		<p align="center"><a th:href="@{logout}">Logout</a></p>
+	</body>
+</html>
