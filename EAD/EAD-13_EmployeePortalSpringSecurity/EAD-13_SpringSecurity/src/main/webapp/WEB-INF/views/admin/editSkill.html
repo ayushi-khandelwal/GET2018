@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th = "www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+	<style>
+		.container {
+				margin: 5% auto;
+				width: 50%;
+				padding: 5%;
+				box-shadow: 5px 5px 5px grey;
+				border-radius: 12px;
+				background-color: lightgrey;
+			}
+		
+			.container * {
+				margin: 3%;
+			}
+				
+			form {
+				background-color: white;
+				padding: 5%;
+				margin: 3% 0%;
+			}
+	</style>
+<title>Edit Skills</title>
+</head>
+<body>
+	<div align="center" class="container">
+		<form th:object="${skillMaster}" th:action="@{../skills}" method="post">
+			<input type="hidden" th:field="*{skillId}" />
+			<label>Skill: </label>
+			<input type="text" th:field="*{skillName}" required="required" /><br/>
+			<input type="submit" value="Save"/>
+		</form>
+	</div>
+	
+	<hr />
+	<p align="center"><a th:href="@{../skills}">Show all skills</a></p>
+	<p align="center"><a th:href="@{logout}">Logout</a></p>
+</body>
+</html>
