@@ -1,0 +1,47 @@
+#square1 {
+	height: 50px;
+	width: 50px;
+	background-color: #ffa500;
+    position: absolute;
+    
+    /*animation-name | duration | delay | iteration-count*/
+    animation: animation 2s -2s infinite;
+}
+
+#square2 {
+	height: 50px;
+	width: 50px;
+	background-color: #0000FF;
+    position: absolute;
+    animation: animation 2s -1.5s infinite;
+}
+
+#square3 {
+	height: 50px;
+	width: 50px;
+	background-color: #FF0000;
+    position: absolute;
+    animation: animation 2s -1s infinite;
+}
+
+#square4 {
+	height: 50px;
+	width: 50px;
+	background-color: #FFFF00;
+    position: absolute;
+    animation: animation 2s -0.5s infinite;
+}
+
+#container {
+    position: absolute;
+    left: 50%;
+    top : 50%;
+}
+
+@keyframes animation {
+	0%   {left: 0px; top: 0px;}
+    25%  {left: 50px; top: 0px;}
+    50%  {left: 50px; top: 50px;}
+    75%  {left: 0px; top: 50px;}
+    100% {left: 0px; top: 0px;}
+}
