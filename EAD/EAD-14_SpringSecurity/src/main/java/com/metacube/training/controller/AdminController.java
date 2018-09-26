@@ -40,7 +40,6 @@ public class AdminController {
 	
 	@GetMapping("/dashboard")
 	public String login() {
-		System.out.println("================Dashboard====================");
 		return "admin/dashboard";
 	}
 
@@ -155,12 +154,6 @@ public class AdminController {
 		return "redirect:/admin/allEmployee";
 	}
 	
-	
-	@RequestMapping(path = "/search", method = RequestMethod.GET)
-	public String searchEmployee(Model model) {
-	return "admin/search";
-	}
-
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout()
     {

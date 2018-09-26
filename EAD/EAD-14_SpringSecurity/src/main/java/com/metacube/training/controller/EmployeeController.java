@@ -1,5 +1,7 @@
 package com.metacube.training.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -29,12 +31,11 @@ public class EmployeeController {
 
 
 	@RequestMapping(path = "/dashboard", method = RequestMethod.GET)
-	public String search(Model model, HttpServletRequest request) {
-		request.getSession().setAttribute("employeeCode", "1");
-		model.addAttribute("employee",employeeService.getEmployeeById(request.getSession().getAttribute("employeeCode").toString()));
-		return "employee/dashboard";
-	}
-
+    public String search(Model model, HttpServletRequest request, Principal principal) {
+        request.getSession().setAttribute("employeeCode", principal.getName());
+        model.addAttribute("employee",employeeService.getEmployeeById(principal.getName()));
+        return "employee/dashboard";
+    }
 	/*@GetMapping(path = "/logout")
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
