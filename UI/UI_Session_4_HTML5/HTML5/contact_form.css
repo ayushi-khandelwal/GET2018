@@ -1,0 +1,81 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: verdana;
+}
+
+section {
+	background-color: #EBEBEB;
+	width: 80%;
+	margin: auto;
+	padding: 20px;
+}
+
+input:focus:invalid, textarea:focus:invalid { 
+    border: 1px solid red;
+} 
+
+input:focus:valid, textarea:focus:valid { 
+    border: 1px solid green;
+} 
+
+.form_row {
+	display: flex;
+	padding: 7px;
+}
+
+.form_row label {
+	text-align: right;
+	padding-right: 30px;
+	width: 40%;
+	font-size: 14px;
+}
+
+i {
+	color: #696969;
+}
+
+.icons {
+	border: 1px solid #A9A9A9;
+	margin: auto 0px;
+	padding: 5px 7px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.form_row input, .form_row select, .form_row textarea {
+	padding: 5px;
+	width: 25%;
+	border: 1px solid #A9A9A9;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+
+}
+
+.form_row input[type='radio'] {
+    width: 20px;
+    height: 15px;
+}
+
+.form_row textarea {
+	padding: 5px;
+	width: 25%;
+}
+
+#desc_icon {
+	padding: 13px 7px;
+}
+
+button {
+	margin: auto;
+	background-color: #EC9932;
+	padding: 5px 10px;
+	color: #FFFFFF;
+	border-style: none;
+	border-radius: 10%;
+}
+
+button i {
+	color: white;
+	padding: 0px 5px;
+}

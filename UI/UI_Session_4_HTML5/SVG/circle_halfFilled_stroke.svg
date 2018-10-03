@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg  xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+	<!-- d is path data -->
+	<!-- M is move to point 150,0 then make an arc, if 0 made it anti-clockwise and then end that arc to point (150+0),(0+300) -->
+	<path d="M 150,0  a 1,1  0 0,0   0,300" fill="#6622AA"/>
+	<path d="M 150,10  a 1,1  0 0,1   0,280" fill="#0000" stroke="grey" stroke-width="20"/>
+</svg>
