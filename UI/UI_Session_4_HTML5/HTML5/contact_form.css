@@ -12,21 +12,22 @@ section {
 }
 
 input:focus:invalid, textarea:focus:invalid { 
-    border: 1px solid red;
+    border: 1px solid red !important;
 } 
 
 input:focus:valid, textarea:focus:valid { 
-    border: 1px solid green;
+    border: 1px solid green !important;
 } 
 
-.form_row {
+.form_row, .dynamic_block {
 	display: flex;
 	padding: 7px;
 }
 
-.form_row label {
+.form_row label, .dynamic_block label {
 	text-align: right;
 	padding-right: 30px;
+	padding-top: 8px;
 	width: 40%;
 	font-size: 14px;
 }
@@ -38,13 +39,13 @@ i {
 .icons {
 	border: 1px solid #A9A9A9;
 	margin: auto 0px;
-	padding: 5px 7px;
+	padding: 8px 7px;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 }
 
-.form_row input, .form_row select, .form_row textarea {
-	padding: 5px;
+.form_row input, .form_row select, .form_row textarea, .dynamic_block input, .dynamic_block select, .dynamic_block textarea {
+	padding: 8px;
 	width: 25%;
 	border: 1px solid #A9A9A9;
 	border-top-right-radius: 5px;
@@ -52,12 +53,12 @@ i {
 
 }
 
-.form_row input[type='radio'] {
+.form_row input[type='radio'], .dynamic_block input[type='radio'] {
     width: 20px;
     height: 15px;
 }
 
-.form_row textarea {
+.form_row textarea, .dynamic_block textarea {
 	padding: 5px;
 	width: 25%;
 }
