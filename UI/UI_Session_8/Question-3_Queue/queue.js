@@ -6,7 +6,7 @@ function Queue() {
     this.QueueElements = [];
 }
 
-Queue.prototype.enque = function (element) {
+Queue.prototype.enqueue = function (element) {
     if (this.front == -1) {
         this.front++;
         this.QueueElements[++(this.rear)] = element;
@@ -15,9 +15,9 @@ Queue.prototype.enque = function (element) {
     }
 }
 
-Queue.prototype.deque = function () {
+Queue.prototype.dequeue = function () {
     if (this.front > this.rear) {
-        alert("No item in queue to deque !");
+        alert("No item in queue to dequeue !");
     } else {
         this.QueueElements[this.front] = null;
         this.front++;
@@ -42,12 +42,12 @@ function takeInput() {
             switch (choice) {
                 case "1":
                     let element = prompt("Enter the element:", "");
-                    queue.enque(element);
+                    queue.enqueue(element);
                     queue.display();
                     break;
 
                 case "2":
-                    queue.deque();
+                    queue.dequeue();
                     queue.display();
                     break;
 
