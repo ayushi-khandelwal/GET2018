@@ -7,7 +7,7 @@ function Stack() {
 }
 
 Stack.prototype.push = function(element) {
-    if (this.top == this.stackSize) {
+    if (this.top == this.stackSize -1) {
         alert("Stack Overflowed !");
     } else {
         this.stackElements[++(this.top)] = element;
