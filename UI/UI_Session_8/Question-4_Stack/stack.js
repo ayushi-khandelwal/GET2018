@@ -25,9 +25,10 @@ Stack.prototype.pop = function() {
 
 Stack.prototype.display = function() {
     let elementsString = "";
-    for (let i = (this.top); i >= 0; i--) {
+    for (let i = (this.top); i > 0; i--) {
         elementsString += this.stackElements[i] + "\n";
     }
+    elementsString += this.stackElements[i];
     alert("Stack formed:\n" + elementsString);
 }
 
