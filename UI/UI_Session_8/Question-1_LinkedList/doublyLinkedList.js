@@ -28,10 +28,11 @@ function displayLinkedList() {
     let listElements = "";
     if(head != null) {
         let tempNode = head;
-        while(tempNode != null) {
+        while(tempNode.next != null) {
             listElements += tempNode.element+"<--->";
             tempNode = tempNode.next;
         }
+        listElements += tempNode.element;
         alert("Entered List:\n"+listElements);
     } else {
         alert("No data in list !");
