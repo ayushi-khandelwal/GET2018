@@ -26,9 +26,10 @@ Queue.prototype.dequeue = function () {
 
 Queue.prototype.display = function () {
     let elementsString = "";
-    for (let i = (this.front); i <= this.rear; i++) {
+    for (let i = (this.front); i < this.rear; i++) {
         elementsString += this.QueueElements[i] + ", ";
     }
+    elementsString += this.QueueElements[i];
     alert("Queue formed:\n" + elementsString);
 }
 
