@@ -42,7 +42,6 @@ function validate() {
 	project_desc_element = document.getElementsByName("projectDesc")[0];
 
 	if (typeof(zipcode_element) != 'undefined') {
-		alert("zip val")
 		zipcode_element.addEventListener('change', restoreDefaults);
 	}
 	if (typeof(website_element) != 'undefined') {
@@ -168,7 +167,7 @@ function validateEmail(element) {
 }
 
 function validatePhone(element) {
-	if (!element.value.match("[0-9]{10}")) {
+	if (!element.value.match("[\d]{10}")) {
 		errorList.push({ 
 			label : "Phone Number",
 			errorMessage : "Phone number is invalid."
