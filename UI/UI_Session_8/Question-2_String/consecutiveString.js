@@ -1,28 +1,25 @@
-function removeRepeatedElements(userString) {
-    var startIndexOfRepString = 0;
-    var endIndexOfRepString = 0;
-    for (var index = 1; index < userString.length; index++) {
-        if (userString.slice(index, index + 1) === userString.slice(index - 1, index)) {
-            endIndexOfRepString = index;
-        }
-        else {
-            if ((endIndexOfRepString - startIndexOfRepString) <= 0) {
-                startIndexOfRepString = index;
-                continue;
-            }
-            else {
-                return removeRepeatedElements(userString.slice(0, startIndexOfRepString) +
-                userString.slice(endIndexOfRepString + 1, userString.length + 1));
-            }
-        }
-    }
-    return userString;
+function removeConsecutiveRepeatedCharacters(inputString) {
+   var counter = 0, flag = 0;
+      
+   for (counter = 0; counter < inputString.length - 1; counter++) {
+       var repeatedElements = inputString[counter];
+       while (inputString[counter] == inputString[counter + 1] ) {
+           flag = 1;
+           repeatedElements = repeatedElements + inputString[counter + 1];
+           counter++;
+       }
+       if (flag == 1) {
+           inputString = inputString.replace(repeatedElements, "");
+           flag = 0;
+           counter = -1;
+       }
+   }
+   return inputString;
 }
-
 function takeInput() {
-    userString = prompt("Enter String:\n(Press Cancel to exit !)", "");
-    if (userString == null || userString == "") alert("Program terminated !");
+    inputString = prompt("Enter String:\n(Press Cancel to exit !)", "");
+    if (inputString == null || inputString == "") alert("Program terminated !");
     else {
-       alert("String after removal of repeated elements:\n\n"+removeRepeatedElements(userString));
+       alert("String after removal of repeated elements:\n\n"+removeConsecutiveRepeatedCharacters(inputString));
     }
 }
