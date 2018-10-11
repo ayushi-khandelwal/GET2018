@@ -1,11 +1,14 @@
 body {
 	background-color: #EBEBEB;
-	width: 80%;
 	margin: auto;
 	padding: 20px;
 }
 
 h2 {
+	text-align: center;
+}
+
+#form_data_div {
 	text-align: center;
 }
 
@@ -17,12 +20,13 @@ h2 {
 
 .info_label {
 	text-align: right;
-	padding-right: 30px;
-	padding-top: 8px;
 	width: 40%;
+	padding: 3px 8px;
+	margin-left: 60px;
 }
 
 .info_value { 
+	text-align: left;
 	width: 50%;
 	padding: 3px 8px;
 }
