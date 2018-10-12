@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Registration</title>
+</head>
+	<body>
+	<form th:object="${employee}" th:action="@{../employee}" method="post">
+		<table>
+		<tr>
+		<td>First Name:</td>
+			<td><input type="text" id="firstName" name="firstName" th:field="*{firstName}" /></td>
+		</tr>
+		<tr>
+		<td>Last Name:</td>
+			<td><input type="text" id="lastName" name="lastName" th:field="*{lastName}" /></td>
+		</tr>
+		<tr>
+		<td>Date Of Birth:</td>
+			<td><input type="date" id="dateOfBirth" name="dateOfBirth" th:field="*{dob}"/></td>
+		</tr>
+		<tr>
+			<td>Gender:</td>
+		<td><input type="radio" id="gender" name="gender" value="M" th:field="*{gender}"/>Male</td>
+			<td><input type="radio" id="gender" name="gender" value="F" th:field="*{gender}"/>Female</td>
+		</tr>
+		<tr>
+		<td>Primary Contact:</td>
+			<td><input type="text" id="primaryContact" name="primaryContact" th:field="*{primaryContactNumber}" maxlength="10" /></td>
+		</tr>
+		<tr>
+		<td>Secondary Contact:</td>
+			<td><input type="text" id="secondaryContact" name="secondaryContact" th:field="*{secondaryContactNumber}" maxlength="10"/></td>
+		</tr>
+		<tr>
+		<td>Email Id:</td>
+			<td><input type="email" id="email" name="email" th:field="*{emailId}"/></td>
+		</tr>
+		<tr>
+		<td>Skype Id:</td>
+			<td><input type="text" id="skype" name="skype" th:field="*{skypeId}"/></td>
+		</tr>
+		<tr>
+		<td>Password:</td>
+			<td><input type="password" id="password" name="password" th:field="*{password}"/></td>
+		</tr>
+		<tr>
+			<td><input type="submit" value="Save Employee" /></td>
+		</tr>
+		</table>
+	</form>
+</body>
+</html>

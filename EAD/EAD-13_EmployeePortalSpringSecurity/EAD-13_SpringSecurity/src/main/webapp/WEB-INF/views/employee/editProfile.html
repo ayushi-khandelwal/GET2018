@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+	<style>
+		.container {
+			margin: 5% auto;
+			width: 50%;
+			padding: 5%;
+			box-shadow: 5px 5px 5px grey;
+			border-radius: 12px;
+			background-color: lightgrey;
+		}
+	
+		.container * {
+			margin: 3%;
+		}
+		
+		form {
+			background-color: white;
+			padding: 5%;
+			margin: 3% 0%;
+		}
+	</style>
+<title>Edit Profile</title>
+</head>
+<body>
+	<div align="center" class="container">
+		<h2>Edit Profile</h2>
+		<form th:action="@{/employee/editProfile}" method="post">
+			<table>
+			<tr><td><input type="hidden" name="" th:field="${employee.firstName}"/></td></tr>
+			<tr><td><input type="hidden" name="" th:field="${employee.lastName}"/></td></tr>
+			<tr><td><input type="hidden" name="" th:field="${employee.gender}"/></td></tr>
+			<tr><td><input type="hidden" name="" th:field="${employee.password}"/></td></tr>
+			<tr>
+				<td>Employee Id</td>
+				<td><input type="text" name="employeeId" th:field="${employee.employeeCode}" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<td>Email Id</td>
+				<td><input type="email" name="emailId" th:field="${employee.emailId}"></td>
+			</tr>
+			<tr>
+				<td>Date Of Birth</td>
+				<td><input type="text" name="dob" th:field="${employee.dob}"></td>
+			</tr>
+			</table>
+			<input type="submit" value="SAVE">
+		</form>
+	</div>
+	
+	<hr />
+	<p align="center"><a th:href="@{dashboard}">Go to dashboard</a></p>
+	<p align="center"><a th:href="@{logout}">Logout</a></p>
+</body>
+</html>

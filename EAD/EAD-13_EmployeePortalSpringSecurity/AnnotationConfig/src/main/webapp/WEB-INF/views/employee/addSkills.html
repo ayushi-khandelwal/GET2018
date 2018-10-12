@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th = "www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>add Skills</title>
+</head>
+<body>
+	<div align="center">
+		<div align="center">
+			<form th:action="@{../employee/addSkills}" method="post">
+				<label>Select Your Skill:</label>
+				<select name="skillId">
+					<div th:each = "skillList : ${skillList}">
+						<option th:text="${skillList.skillName}" th:value= "${skillList.skillId}">Skill</option>
+					</div>
+				</select>
+				<input type="submit" value="Add skill">
+			</form>
+		</div>
+		<hr/>
+		<div th:if="${not #lists.isEmpty(employeeSkill)}">
+			<table>
+				<tr>
+					<th>Your Skills</th>
+				</tr>
+				<tr th:each = "employeeSkill : ${employeeSkill}">
+					<td th:text="${employeeSkill.skillName}">Id</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

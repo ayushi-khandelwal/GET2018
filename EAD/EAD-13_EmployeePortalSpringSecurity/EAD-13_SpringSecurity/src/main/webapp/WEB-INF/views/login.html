@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<style>
+.login_container {
+	margin: 5% auto;
+	width: 20%;
+	padding: 5%;
+	box-shadow: 5px 5px 5px grey;
+	border-radius: 12px;
+	background-color: lightgrey;
+}
+
+#error-message {
+	color: red;
+	font-size: 17px;
+}
+
+#message {
+	color: green;
+	font-size: 17px;
+}
+
+form {
+	background-color: white;
+	padding: 5%;
+	margin-top: 3%;
+}
+
+input[type=text], [type=password] {
+	margin: 2%;
+	padding: 2%;
+	border-radius: 10px;
+}
+
+input[type=submit] {
+	margin-top: 3%;
+	padding: 3% 10%;
+	border-radius: 5px;
+	background: lightgreen;
+}
+
+h1 {
+	text-align: center;
+}
+</style>
+<title>Login</title>
+</head>
+<body>
+	<div class="login_container">
+		<h1>Login</h1>
+		<div>
+			<div th:if="${param.error}">
+				<div id="error-message">Invalid username or password!</div>
+			</div>
+			<div th:if="${param.logout}">
+				<div id="message">You have been logged out</div>
+			</div>
+			<form th:action="@{/Login}" method="post">
+				<div>
+					Username: <input type="text" name="username"
+						placeholder="Enter Username">
+
+				</div>
+				<div>
+					Password: <input type="password" name="password"
+						placeholder="Enter Password">
+
+				</div>
+				<div align="center">
+					<input type="submit" value="login">
+				</div>
+			</form>
+
+		</div>
+		</div>
+</body>
+</html>
