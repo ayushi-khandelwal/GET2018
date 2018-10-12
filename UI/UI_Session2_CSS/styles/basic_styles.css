@@ -1,0 +1,164 @@
+header, section, footer {
+	padding: 0 12% 0 12%;
+}
+.content {
+	padding-top: 2%;
+	padding-bottom: 5%;
+}
+
+.image img, #features img, .phone_image img {
+	width: 100%;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+header {
+	background-image: url('../images/homebg.png');
+}
+
+#home_id {
+	background-image: url('../images/homebg.png');
+	background-size: 100% 100%;
+}
+
+section {
+	padding-top: 5%;
+	background-image: url('../images/bodybg.png');
+}
+
+#bottom {
+	background-image: url('../images/downloadbg.png');
+}
+
+.download {
+	padding: 5%;
+}
+
+.feature_images{
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.gray {
+	color: #9898B2;
+}
+
+.inline {
+	display: inline;
+}
+
+.left {
+	float: left;
+}
+
+.center {
+	margin: auto;
+	text-align: center;
+}
+
+.right {
+	float: right;
+}
+
+.padding_top {
+	padding-top: 8%;
+}
+
+.block {
+	display: block;
+}
+
+.padding {
+	padding: 10%;
+}
+
+h1 {
+	color: white;
+	font-size: 60px;
+}
+
+.screenshot_content {
+	padding-top: 25%;
+}
+
+.ss_padding * {
+	padding-top: 5%;
+}
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.download_button {
+    background-color: #FC6A45;
+}
+
+.feature_button {
+    background-color: #4563C5;
+}
+
+#features h2, #screenshots h2, #reviews h2 {
+	color: #6388FB;
+	text-align: center;
+	padding-bottom: 1%;
+	font-size: 40px;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+#bottom h2 {
+	color: white;
+	font-size: 40px;
+}
+
+#bottom p {
+	color: white;
+	font-size: 20px;
+	padding-right: 100px;
+}
+
+footer {
+	background-color: #383A53;
+	padding-top: 3%;
+	padding-bottom: 3%;
+}
+
+.review * {
+	padding: 5px;
+}
+
+#reviews, .download * {
+	padding-bottom: 5%;
+}
+
+footer a, footer p {
+	color: #A1A7B8;
+}
+
+.options * {
+	padding-left: 10px;
+}
+
+hr {
+	background-color: #555;
+	border: none;
+    height: 1px;
+	margin: 30px 0px;
+}
