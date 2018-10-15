@@ -8,7 +8,7 @@ function userListController($scope, $http) {
 
     $scope.addUser = function () {
         if ($scope.name != "" && $scope.contact != "" && $scope.address != "") {
-            $scope.totalUsers = 4;
+            //$scope.totalUsers = 4;
             $scope.users.push({
                 'id': $scope.totalUsers + 1,
                 'name': $scope.name,
