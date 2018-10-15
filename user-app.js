@@ -7,7 +7,7 @@ function userListController($scope, $http) {
     });
 
     $scope.addUser = function () {
-        if ($scope.name != "") {
+        if ($scope.name != "" && $scope.contact != "" && $scope.address != "") {
             $scope.totalUsers = 4;
             $scope.users.push({
                 'id': $scope.totalUsers + 1,
@@ -16,7 +16,7 @@ function userListController($scope, $http) {
                 'location': $scope.address
             });
         } else {
-            alert("plz fill fields");
+            alert("Invalid details entered");
         }
     };
 
