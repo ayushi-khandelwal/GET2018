@@ -1,0 +1,25 @@
+<div class="row p-4">
+	<aside class="col-md-3 fixedElement m-2 p-3">
+		<div class="border rounded list-group">
+			<button class="text-left list-group-item" autofocus ng-click="showItems=all">All Categories</button>
+			<button class="text-left list-group-item" ng-click="showItems={category:'bread'}">Bread</button>
+			<button class="text-left list-group-item" ng-click="showItems={category:'dairyProducts'}">Dairy Products</button>
+			<button class="text-left list-group-item" ng-click="showItems={category:'fruits'}">Fruits</button>
+			<button class="text-left list-group-item" ng-click="showItems={category:'spices'}">Seasoning and Spices</button>
+			<button class="text-left list-group-item" ng-click="showItems={category:'vegetables'}">Vegetables</button>
+		</div>
+	</aside>
+	<section class="col-md-9 row">
+		<div class="item_cards border rounded m-4 p-0" ng-repeat="product in products | filter:showItems">
+			<img src="{{product.image}}">
+			<p class="h4 px-2 pt-2">{{product.name}}</p>
+			<p class="strong px-2">${{product.price}}</p>
+			<button class="button_quantity border border-info bg-info col-md-12" ng-click="addToCart(product)" ng-if="cartQuantities[product.id] == undefined || cartQuantities[product.id] == 0">Add to Cart</button>
+			<div class="d-flex border border-info justify-content-between" ng-if="cartQuantities[product.id] > 0">
+				<button ng-click="changeQuantity(product.id, '-')" class="button_quantity bg-info rounded-right">-</button>
+				<div class="text-center py-2">{{cartQuantities[product.id]}} in cart</div>
+				<button ng-click="changeQuantity(product.id, '+')" class="button_quantity text-center bg-info rounded-left">+</button>
+			</div>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,42 @@
+body {
+	position: relative;
+}
+
+header {
+	width: 1200px;
+	margin: 0px auto;
+}
+
+header div * {
+	padding: 5px;
+}
+
+.fixedElement {
+    position:absolute;
+    top:0;
+    width:100%;
+    z-index:100;
+}
+
+img {
+	width: 300px;
+}
+
+.item_cards {
+	overflow: hidden;
+}
+
+aside button:focus,aside button:active, .activeButton { 
+	color: white;
+    background-color: #1C6FFB;
+}
+
+.button_quantity {
+	color: white;
+	padding: 10px 20px;
+	border: none;
+}
+
+.dropdown button:focus {
+	outline: none !important;
+}

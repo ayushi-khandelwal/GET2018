@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mt-4">
+            <h1>Shopping Cart</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-md-8 row px-0 my-4">
+            <div class="card-header py-0 d-flex align-items-center justify-content-between">
+
+                <p class="col-md-4">You have {{cartCount}} items in you cart</p>
+                <button class="btn btn-grey btn-sm col-md-3" ng-if="cartItems.length > 0" ng-click="deleteAll()">Clear Shopping cart</button>
+                
+            </div>
+            <div class="card-body" ng-if="cartItems.length > 0">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"><p class="font-weight-bold">Product</p></div>
+                    <div class="col-md-4">
+                        <p class="font-weight-bold">Quantity</p>
+                    </div>
+                    <div class="col-md-2"><p class="font-weight-bold">Price</p></div>
+                </div>
+                <div ng-repeat="item in cartItems">
+                    <div class="row align-items-center my-4 border-bottom px-0"">
+                        <div class="col-md-3 my-2"><img src="{{item.image}}" style="height:50px !important; width:50px !important; border-radius: 50%;"></div>
+                        <div class="col-md-3"><p>{{item.name}}</p></div>
+                        <div class="col-md-4">
+                            <p>{{item.quantity}} in cart</p>
+                        </div>
+                        <div class="col-md-2"><p>${{item.price}}</p></div>
+                    </div>
+                </div>
+                <div class="row d-flex align-items-center">
+                    <div class="col-md-2 mr-auto"><a class="btn btn-primary" href="#!/products/shipping/">Check Out</a></div>
+                    <div class="col-md-2 ml-auto" ng-if="totalOrderPrice > 0"><p>${{totalOrderPrice.toPrecision(2)}}</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

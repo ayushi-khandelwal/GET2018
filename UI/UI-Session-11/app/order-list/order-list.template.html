@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="border-bottom py-3">Orders</h1>
+    <div class="row border-bottom d-flex justify-content-around align-items-center py-1 m-0">
+        <p class="col-md-4 font-weight-bold m-0 p-0">Customer</p>
+        <p class="col-md-4 font-weight-bold m-0 p-0">Date</p>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row border-bottom d-flex justify-content-around align-items-center py-2" ng-repeat="order in orders">
+        <p class="col-md-4 my-0">{{order.customerName}}</p>
+        <p class="col-md-4 my-0">{{order.date}}</p>
+        <div class="col-md-4 my-0"><button class="btn btn-link" data-toggle="modal" data-target="#orderModal" ng-click="getOrder(order.id)">View</button></div>
+    </div>
+</div>
+
+<div class="modal" id="orderModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Order</h4>
+                <button class="btn btn-link btn-lg" type="button" class="close" data-dismiss="modal" arial-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="row d-flex justify-content-between border-bottom" ng-repeat="item in items">
+                    <div class="col-md-6"><p>{{item.quantity}} x {{item.name}}</p></div>
+                    <div class="col-md-6"><p class="text-right">${{item.price}}</p></div>
+                </div>
+                <div class="row d-flex justify-content-between">
+                    <div class="col-md-6"><p class="font-weight-bold">Total</p></div>
+                    <div class="col-md-6"><p class="font-weight-bold text-right">${{totalPrice.toPrecision(2)}}</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
