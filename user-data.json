@@ -1,0 +1,33 @@
+[
+    {
+        "id": "1",
+        "name": "Ayushi",
+        "contact": "7877050798",
+        "location": "Jaipur"
+    }, {
+        "id": "2",
+        "name": "Sam",
+        "contact": "1234567890",
+        "location": "San Fransisco"
+    }, {
+        "id": "3",
+        "name": "John",
+        "contact": "7894561230",
+        "location": "Phillipines"
+    }, {
+        "id": "4",
+        "name": "Ania",
+        "contact": "789456123",
+        "location": "New York"
+    }, {
+        "id": "5",
+        "name": "Jack",
+        "contact": "3321234566",
+        "location": "WB"
+    }, {
+        "id": "6",
+        "name": "Joey",
+        "contact": "9887654321",
+        "location": "USA"
+    }
+]
