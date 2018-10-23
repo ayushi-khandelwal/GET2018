@@ -1,0 +1,175 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Spinach",
+      "price": "0.45",
+      "image": "images/spinach.jpg",
+      "category": "vegetables"
+    },
+    {
+      "id": 2,
+      "name": "Orange",
+      "price": "2.5",
+      "image": "images/orange.jpg",
+      "category": "fruits"
+    },
+    {
+      "id": 3,
+      "name": "Avocado",
+      "price": "5.42",
+      "image": "images/avocado.jpg",
+      "category": "fruits"
+    },
+    {
+      "id": 4,
+      "name": "Saffron",
+      "price": "0.45",
+      "image": "images/saffron.jpg",
+      "category": "spices"
+    },
+    {
+      "id": 5,
+      "name": "Cardamom",
+      "price": "3.0",
+      "image": "images/cardamom.jpg",
+      "category": "spices"
+    },
+    {
+      "id": 6,
+      "name": "Cumin",
+      "price": "0.55",
+      "image": "images/cumin.jpg",
+      "category": "spices"
+    },
+    {
+      "id": 7,
+      "name": "Tomato",
+      "price": "1.45",
+      "image": "images/tomato.jpg",
+      "category": "vegetables"
+    },
+    {
+      "id": 8,
+      "name": "Freshly Baked Bread",
+      "price": "0.65",
+      "image": "images/bakedbread.jpg",
+      "category": "bread"
+    },
+    {
+      "id": 9,
+      "name": "Cinnamon",
+      "price": "2.0",
+      "image": "images/cinnamon.jpg",
+      "category": "spices"
+    },
+    {
+      "id": 10,
+      "name": "Sliced Bread",
+      "price": "1.65",
+      "image": "images/slicedbread.jpg",
+      "category": "bread"
+    },
+    {
+      "id": 11,
+      "name": "Cheese",
+      "price": "4.75",
+      "image": "images/cheese.jpg",
+      "category": "dairyProducts"
+    },
+    {
+      "id": 12,
+      "name": "Yogurt",
+      "price": "1.0",
+      "image": "images/yogurt.jpg",
+      "category": "dairyProducts"
+    }
+  ],
+  "cartItems": [],
+  "orders": [
+    {
+      "items": [
+        {
+          "id": 2,
+          "name": "Spinach",
+          "price": "0.45",
+          "imageUrl": "images/spinach.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 4,
+          "name": "Orange",
+          "price": "2.5",
+          "imageUrl": "images/orange.jpg",
+          "quantity": 7
+        },
+        {
+          "id": 8,
+          "name": "Avocado",
+          "price": "5.42",
+          "imageUrl": "images/avocado.jpg",
+          "quantity": 2
+        },
+        {
+          "id": 11,
+          "name": "Saffron",
+          "price": "0.45",
+          "imageUrl": "images/saffron.jpg",
+          "quantity": 3
+        }
+      ],
+      "customerName": "John Doe",
+      "date": "10/22/2018",
+      "id": 1
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Spinach",
+          "price": "0.45",
+          "imageUrl": "images/spinach.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 4,
+          "name": "Orange",
+          "price": "2.5",
+          "imageUrl": "images/orange.jpg",
+          "quantity": 2
+        }
+      ],
+      "customerName": "John Doe",
+      "date": "10/22/2018",
+      "id": 2
+    },
+    {
+      "items": [
+        {
+          "id": 2,
+          "name": "Spinach",
+          "price": "0.45",
+          "imageUrl": "images/spinach.jpg",
+          "quantity": 2
+        },
+        {
+          "id": 4,
+          "name": "Orange",
+          "price": "2.5",
+          "imageUrl": "images/orange.jpg",
+          "quantity": 2
+        },
+        {
+          "id": 3,
+          "name": "Avocado",
+          "price": "5.42",
+          "imageUrl": "images/avocado.jpg",
+          "quantity": 3
+        }
+      ],
+      "customerName": "John Doe",
+      "date": "10/22/2018",
+      "id": 3
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+angular.module('myMarket', ['ngRoute','displayedItems', 'cartDetail', 'shipping', 'orderSuccess', 'orderList']);
